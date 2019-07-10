@@ -38,22 +38,62 @@ router.post('/api/v1/fileserver', function(req, res){
 
 //define a route to download a file and parse the url.
 router.get('/api/v1/fileserver',(req, res) => {
+    var flag = false;
+    var i;
     var file; //the name of file to be downloaded
-    
-    var manufacturer_id = req.param('manufacturer_id'); // 0 -65536
+    var protocols = ["HART", "PROFIBUS", "PROFINET", "MODBUS"];
+    var extensions = ["json", "zip", "xml", "bin"];
+
+    var manufacturerId = req.param('manufacturerId'); // 0 -65536
     var deviceType = req.param('deviceType'); // 0 -255
-    var devicerevision = req.param('devicerevision'); // 0 -255
-    var protocol = req.param('protocol'); // HART, PROFIBUS, PROFINET, MODBUS
+    var deviceRevision = req.param('deviceRevision'); // 0 -255
+    var protocolType = req.param('protocolType'); // HART, PROFIBUS, PROFINET, MODBUS
     var fileType = req.param('fileType');
-    
-    if(protocol === undefined) {
-        protocol = 'HART';
+
+//.......................................................    
+    for (i=0; i<4; i++) {
+        if ( fileType != extensions[i] && fileType != undefined ){
+            flag = true;
+            break;
+        }
+    }
+
+    for (i=0; i<4; i++) {
+        if ( protocolType != protocols[i] && protocolType != undefined ){
+            flag = true;
+            break;
+        }
+    }
+//........................................................
+    if (typeof(manufacturerId) != "bigint"){
+        flag = true;
+    }
+    if (typeof(deviceType) != "bigint"){
+        flag = true;
+    }
+    if (typeof(deviceRevision) != "bigint"){
+        flag = true;
+    }
+//.........................................................
+    if ( manufacturerId > 65536 || manufacturerId < 0 ){
+        flag = true;
+    }
+    if ( deviceType > 255 || deviceType < 0 ){
+        flag = true;
+    }
+    if ( deviceRevision > 255 || deviceRevision < 0 ){
+        flag = true;
+    }
+//.........................................................
+    if(protocolType === undefined) {
+        protocolType = 'HART';
     }
     if(fileType === undefined) {
         fileType = 'zip';
     }
+//.........................................................
 
-    file = manufacturer_id + "_" + deviceType + "_" + devicerevision + "_" + protocol + "." + fileType;
+    file = manufacturerId + "_" + deviceType + "_" + deviceRevision + "_" + protocolType + "." + fileType;
 
     console.log(file);
     console.log("\n");
@@ -64,7 +104,20 @@ router.get('/api/v1/fileserver',(req, res) => {
     var fileLocation = path.join('./uploads',file);
     console.log(fileLocation);
     
-    res.download(fileLocation, file);
+    res.download(fileLocation, file, function (err) {
+        if (err) {
+            console.log("Error 404. File Not Found");
+            return res.sendStatus(404).json(err);
+        }
+        else if (!flag){
+            console.log("Enter a Valid Value.");
+            return res.sendStatus(404).json(err);
+        }
+        else {
+            console.log("File Downloaded");
+        }
+    });
+    flag = false;
 });
 
 //define a route to download a file.
