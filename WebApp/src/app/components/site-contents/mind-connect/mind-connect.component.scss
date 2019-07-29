@@ -1,0 +1,35 @@
+@import "ui-controls/slideToggler";
+.btnDataLogger {
+    color: #fff;
+    
+}
+.btnLogger {
+    margin-top: 90%;
+    font-size: 1em !important;
+}
+
+.btnDataSave {
+    color: #fff;
+    background-color: #767b84;
+}
+
+.labels {
+    font-weight: 500;
+}
+.copyDataconfig{
+  width: 262px;
+  height: 48px;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #f4f7f8, #eaeef0);
+}
+.goOfflineBtn{
+  width: 131px;
+  height: 48px;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #f4f7f8, #eaeef0);
+
+}
+.minConnectBtnMargin{
+    margin-top: -4.3%;
+    margin-left: 66.5%;
+}

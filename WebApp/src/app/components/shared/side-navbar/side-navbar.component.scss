@@ -1,0 +1,11 @@
+@import "_variables.scss";
+:host ::ng-deep p-sidebar {
+    .ui-sidebar.ui-widget.ui-widget-content {
+        top: $header-height;
+        min-width: 70%;
+        padding: 0px;
+        max-height: calc(100vh - $header-height); // overflow-y: scroll;
+        // overflow: auto;
+        border: none;
+    }
+}

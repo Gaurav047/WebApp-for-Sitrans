@@ -1,0 +1,203 @@
+@import "_colors.scss";
+@import "_variables.scss";
+
+.bgwhite {
+    background: $color-white;
+}
+
+.statusBar {
+
+    label,
+    span {
+        font-family: "SiemensSans-Roman";
+        font-size: 12px;
+        margin-bottom: 0px;
+
+        img {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    .imgTextSize {
+        font-family: "SiemensSans-Roman";
+        font-size: 11px;
+    }
+}
+
+.statusBarClass {
+    width: 98%;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.tileSection {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.taskBar {
+    img {
+        width: 35px;
+    }
+}
+
+.red {
+    color: #ec3041;
+    font-size: 16px !important;
+}
+
+.green {
+    color: #30a830;
+    font-size: 16px !important;
+}
+
+.noStatus {
+    color: white;
+}
+
+.clearFilterText {
+    font-size: 12px;
+    font-family: "SiemensSans-Roman";
+    color: grey;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pt-25 {
+    padding-top: 25px;
+}
+
+.statusLink {
+    background-color: transparent;
+    text-decoration: none;
+    color: gray;
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.statusLink:hover {
+    background-color: transparent;
+    text-decoration: none;
+    color: #50bed7;
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+}
+
+.serviceStatus {
+    .fa {
+        font-size: 1px;
+    }
+}
+
+.widthStatusBarLeft {
+    width: 83%;
+}
+
+.widthStatusBarRight {
+    width: 16.2%;
+}
+
+.widthStatusBarCenter {
+    width: 0.8%;
+}
+
+.statusBarPadding {
+    padding: 8px;
+}
+
+.scanBtnStyle {
+    border: 2px solid #4ca9c4;
+    cursor: pointer;
+}
+
+
+.modbusStatusgood {
+    @extend .modbusStatus;
+    background-color: #30a830;
+}
+
+.modbusStatus {
+    width: 48px;
+    height: 28px;
+    border-radius: 2px;
+    border: solid 2px #b4b6b8;
+    background-color: #ffffff;
+    text-align: left;
+    display: inline-flex;
+}
+
+.modbusDivider {
+    width: 6px;
+    height: 18px;
+    border-left-color: #b4b6b8;
+    border-left-width: 1px;
+    border-left-style: solid;
+    margin-top: 3px;
+}
+
+.modbusNumber {
+    width: 21px;
+    height: 28px;
+    text-align: center
+}
+
+.modbusIconRatio {
+    width: 21px;
+    height: 28px;
+
+}
+
+.modbusGoodStausIcon {
+    @extend .modbusIconRatio;
+
+    &::before {
+        font-family: FontAwesome;
+        content: "\f00c";
+        color: #30a830;
+    }
+}
+
+.modbusBadStausIcon {
+    @extend .modbusIconRatio;
+
+    &::before {
+        font-family: FontAwesome;
+        content: "\f00d";
+        color: #ec3041;
+    }
+}
+
+#scanImg {
+    // background-color: transparent !important;
+    $asset-images-path: "/../../../../assets/images";
+    background-image: url("#{$asset-images-path}/ScanDashboard.png");
+    width: 50px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+@media screen and (max-width:850px) {
+    #scanImg {
+        $asset-images-path: "/../../../../assets/images";
+        background-image: url("#{$asset-images-path}/ScanDashboardSmall.png");
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 50px;
+        background-position: center;
+    }
+}
+@media screen and (min-width : 850px) and (max-width: 1429px) {
+    #scanImg {
+        $asset-images-path: "/../../../../assets/images";
+        background-image: url("#{$asset-images-path}/ScanDashboardSmall.png");
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 36px;
+        background-position: center;
+    }
+}

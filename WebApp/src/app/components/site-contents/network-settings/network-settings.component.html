@@ -1,0 +1,182 @@
+<div class="container alignCenter col-sm-8 col-xs-8 col-md-8 col-lg-8">
+  <div class="row btnAlign">
+    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+      <button type="submit" class="saveConfigBtn btn" (click)="saveDataTointerfaceFile()" [disabled]="port1ValidationForm.invalid || port2ValidationForm.invalid || isSaveButtonDiable">
+        <img src="../../../../assets/images/Save.png" alt="">Save Changes</button>&nbsp; &nbsp;
+      <button type="submit" class="btn" (click)="cancelBtn()">
+        <img src="../../../../assets/images/Cancel.png" alt=""> &nbsp;Cancel</button>
+    </div>
+    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+      <button type="submit" class="btn" (click)="rebootConfirmationMsg();" [disabled]="isRebootIsAvailable">
+        <img src="../../../../assets/images/Reboot.png" alt="" > Reboot</button>&nbsp; &nbsp;
+      <button type="submit" class="btn" (click)="viewInterfaceFile()">View Interface File</button>&nbsp; &nbsp;
+    </div>
+    <!-- <div> <span *ngIf="isNetworkChangeSaved ===false">
+        <i class="fa fa-info-circle p-1"></i>
+      </span>
+      <span *ngIf="isNetworkChangeSaved ===false" class="rebootText">
+        Last changes network settings have not been applied yet.Click Reboot to apply the changes.
+      </span>
+    </div> -->
+  </div>
+  <div class="borderline"></div>
+  <div class="row configFont">
+    <div class="col-sm-6">
+      <div id="portX1P1" class="col-sm-10">
+        <label class="portTextFontSize">
+          Port X1P1:
+        </label>
+        <div>Current IP Address: {{staticAddtess}}</div>
+        <br>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optradioPort1" (click)="onClickStaticPort1()" [checked]="port1Checked">Static
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optradioPort1" (click)="onClickDhcpPort1()" [checked]="!port1Checked">DHCP
+          </label>
+        </div>
+        <br>
+        <br>
+        <form [formGroup]="port1ValidationForm">
+          <div class="form-group">
+            <label for="ipAddress">IP address:</label>
+            <input type="text" class="form-control" id="ipAddress" [(ngModel)]="staticIpAddress" name="staticIpAddress"
+              formControlName="ipAddress" (ngModelChange)=" onChangeOfIPForPort1()">
+            <div *ngIf="port1ValidationForm.controls.ipAddress.dirty || port1ValidationForm.controls.ipAddress.touched">
+              <div *ngIf="port1ValidationForm.controls['ipAddress'].hasError('required')" class="error errorForMsg">
+                Please enter a valid IP address
+              </div>
+              <div *ngIf="port1ValidationForm.controls['ipAddress'].hasError('pattern')" class="error errorForMsg">
+                Please enter a valid IP address
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="netmaskAddress">Netmask address:</label>
+            <input type="text" class="form-control" id="netmaskAddress" [(ngModel)]="netMaskIpAddress" name="netMaskIpAddress"
+              formControlName="netMaskAddress" (ngModelChange)=" onChangeOfIPForPort1(); ">
+            <div *ngIf="port1ValidationForm.controls.netMaskAddress.dirty || port1ValidationForm.controls.netMaskAddress.touched">
+              <div *ngIf="port1ValidationForm.controls['netMaskAddress'].hasError('required')" class="error errorForMsg">
+                Please enter a valid Netmask address
+              </div>
+              <div *ngIf="port1ValidationForm.controls['netMaskAddress'].hasError('pattern')" class="error errorForMsg">
+                Please enter a valid Netmask address
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div id="portX1P2" class="col-sm-10">
+        <label class="portTextFontSize">
+          Port X2P1:
+        </label>
+        <div>Current IP Address: {{portX2P1IpAddress}}</div>
+        <br>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optradioPort2" (click)="onClickStaticPort2()" [checked]="port2Checked">Static
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optradioPort2" (click)="onClickDhcpPort2()" [checked]="!port2Checked">DHCP
+          </label>
+        </div>
+        <br>
+        <br>
+        <form [formGroup]="port2ValidationForm">
+          <div class="form-group">
+            <label for="ipAddress">IP address:</label>
+            <input type="text" class="form-control" id="ipAddress" [(ngModel)]="ipPort2Address" name="ipPort2Address"
+              value="ipPort2Address" formControlName="ipAddress" (change)="onChangeOfX2P1IpAddress();">
+            <div *ngIf="port2ValidationForm.controls.ipAddress.dirty || port2ValidationForm.controls.ipAddress.touched">
+              <div *ngIf="port2ValidationForm.controls['ipAddress'].hasError('required')" class="error errorForMsg">
+                Please enter a valid IP address
+              </div>
+              <div *ngIf="port2ValidationForm.controls['ipAddress'].hasError('pattern')" class="error errorForMsg">
+                Please enter a valid IP address
+              </div>
+            </div>
+            <div class="error errorForMsg">{{x2P1IpAddressErrorMsg}}</div>
+          </div>
+          <div class="form-group">
+            <label for="netmaskAddress">Netmask address:</label>
+            <input type="text" class="form-control" id="netmaskAddress" [(ngModel)]="netmaskPort2Address" name="netmaskPort2Address"
+              formControlName="netMaskAddress" (change)="onChangeOfX2P1IpAddress();">
+            <div *ngIf="port2ValidationForm.controls.netMaskAddress.dirty || port2ValidationForm.controls.netMaskAddress.touched">
+              <div *ngIf="port2ValidationForm.controls['netMaskAddress'].hasError('required')" class="error errorForMsg">
+                Please enter a valid Netmask address
+              </div>
+              <div *ngIf="port2ValidationForm.controls['netMaskAddress'].hasError('pattern')" class="error errorForMsg">
+                Please enter a valid Netmask address
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12 col-sm-12 d-flex justify-content-center">
+      <img class="imgCenter" src="../../../../assets/images/Box.png" alt="" height="358" width="630">
+    </div>
+  </div>
+</div>
+<div class="rebootText col-sm-4 col-xs-4 col-md-4 col-lg-4">
+  <div class="imgSize" *ngIf="isNetworkChangeSaved ===false">
+    <img src="../../../../assets/images/info icon.png" alt="">
+  </div>
+  <div class="infoText" *ngIf="isNetworkChangeSaved ===false">
+    Last changed network settings have not been applied yet. Click Reboot to apply the changes.
+  </div>
+</div>
+<!-- modal popup for save button -->
+<app-confirmation-dialog key="saveIPAddress" message="The changes will be applied after system reboot. Click Yes to reboot system now or No
+  to reboot system later"
+  icon="pi pi-info-circle" #confirmSave></app-confirmation-dialog>
+
+<!-- Modal popup for reboot confirmation -->
+<app-confirmation-dialog key="rebootConfirmation" message="Do you want to reboot the system?" icon="pi pi-info-circle" #confirmMsgForRebootBtn></app-confirmation-dialog>
+
+<!-- Modal Popup for reboot msg -->
+<app-modal-popup [isComponentLoad]="false" [isDefaultBtnVisible]="false" #rebootCofirm></app-modal-popup>
+<ng-template #rebootConfirmMsgView>
+  <img src="../../../../assets/images/Confirmation - icon.png" alt="" sty> {{rebootConfirmMsg}}
+</ng-template>
+<!-- modal popup for See Interface file button -->
+<app-modal-popup [isComponentLoad]="false" [isDefaultBtnVisible]="false" #modalRef></app-modal-popup>
+<ng-template #interfaceFileView>
+  <div class="col-sm-6" *ngIf="isInterFaceFileIsAvailable">
+    <h5>Interface file</h5>
+    <div>
+      {{etcText}}
+      <br>
+      <br>{{theLoopbackText}}
+      <br>{{autoLoText}}
+      <br> {{ifaceLoText}}
+      <br>
+      <br>{{wiredInterfaceText}}
+      <br> {{autoEtho0Text}}
+      <br> {{ifaceEtho0Text}} {{port1Text}}
+      <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{addressport1Text}} {{staticIpAddress}}
+      <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{netmaskport1Text}} {{netMaskIpAddress}}
+      <br>
+      <br> {{autoEtho1Text}}
+      <br> {{ifaceEtho1Text}} {{port2Text}}
+      <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{addressport2Text}} {{ipPort2Address}}
+      <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{netmaskport2Text}} {{netmaskPort2Address}}
+    </div>
+  </div>
+  <div class="col-sm-6" *ngIf="!isInterFaceFileIsAvailable">
+      <h5>Interface file</h5> <br>
+    {{addressport1Text}} <br> <br>
+  </div>
+  <div>
+    <button type="submit" class="btn" (click)="closeInterfaceFile()">Close Interface File</button> </div>
+</ng-template>

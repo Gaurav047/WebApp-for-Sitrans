@@ -1,0 +1,26 @@
+<div id="menuBar" class="sideNavBarDiv" *ngIf="navService.sideNavBarVisibility">
+  <p-sidebar (onHide)="closeSideBar()" (onShow)="displayBuildDetails()" [(visible)]="navService.sideNavBarVisibility" [baseZIndex]="10000" [showCloseIcon]="false">
+    <ul id="coachTourStep2" class="nav flex-column sideNavBar">
+
+      <li class="{{obj.borderClass}} nav-item lineDesingOfNavigution" *ngFor="let obj of navMenuObject" [routerLinkActive]="'active'">
+        <a class="nav-link {{obj.icon}}" routerLink={{obj.link}} [routerLink]="'obj.name'" (click)="closeSideBar()">
+          <img src="{{obj.src}}" alt="" height="15" width="15"><span class="pl-3 navText">{{obj.name}}</span></a>
+      </li>
+    </ul>
+    <div class="footer">
+      <div>
+        <i class="fa fa-angle-right">
+          About
+        </i>
+      </div>
+      <!--for a Gap-->
+      <div>{{buildDetails.version}}</div>
+      <div>{{buildDetails.buildNumber}}</div>
+      <div>{{buildDetails.buildDate}}</div>
+      <div>
+        <span>
+          <i class="fa fa-copyright"></i> Siemens AG, {{auth.currentYear}}</span>
+      </div>
+    </div>
+  </p-sidebar>
+</div>

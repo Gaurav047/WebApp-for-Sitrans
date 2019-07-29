@@ -1,0 +1,95 @@
+
+<!--NEW USER -->
+<form [formGroup]="addUser">
+    <div class="container-fluid">
+       <div class="row justify-content-between">
+          <div class="col-6">
+             <span class="siemens-label-bold-text">Add User</span>  
+          </div>
+          <div class="col-6 text-right">
+             <span class="siemens-label-text"><span class="arsenic">*</span> Required fields</span>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-sm-4">
+             <label>UserId<span class="arsenic">*</span></label>
+          </div>
+          <div class="col-sm-9 staticFields">
+             <input maxlength="64" class="form-control" type="text" formControlName="userId">
+             <div *ngIf="(userId.dirty && userId.errors)|| this.isformSubmitted === true" class="error">
+                <div *ngIf="userId?.errors?.required">
+                  userId required.
+                </div>
+                <div *ngIf="userId?.errors?.appUserIdExists">
+                  userId already exists.
+                </div>
+                <div *ngIf="userId?.errors?.minlength">
+                  userId must be at least 5 characters long.
+                </div>
+              </div>
+          </div>
+       </div>
+       <div class="row staticFieldsAdduser">
+          <div class="col-sm-4">
+             <label>Name<span class="arsenic">*</span></label>
+          </div>
+          <div class="col-sm-9">
+             <input class="form-control" type="text" formControlName="username">
+             <app-display-control-error [displayError]="isFieldValid('username')" errorMsg="Please provide a user name">
+              </app-display-control-error>
+          </div>
+       </div>
+       <div class="row">
+          <div  class="col-12 col-sm-10 d-sm-inline-flex">
+             <div class="col-12 col-sm-6 pl-0 staticFieldsAdduser">
+                <label>Role <span class="arsenic">*</span></label>
+                <div class="col-sm-12 pl-0 ">
+                   <p-dropdown  (onChange)="scopeOnRoleChange($event)"  placeholder="Select a role"
+                   [options]="rolesList" formControlName="role"></p-dropdown>
+                   <app-display-control-error [displayError]="isFieldValid('role')" errorMsg="Please provide an access role for the user">
+                    </app-display-control-error>
+                </div>
+             </div>
+             <div class="col-12 col-sm-6 pl-0">
+                <label>Scope </label>
+                <div class="col-sm-11 pl-0 siemens-label-text">
+                   <i class="fa fa-info-circle"></i>
+                   {{scope}}
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="row">
+          <div  class="col-12 col-sm-10 d-sm-inline-flex">
+             <div class="col-12 col-sm-6 pl-0 staticFieldsAdduser">
+                <label>Email Address</label>
+                <div class="col-sm-11 pl-0">
+                   <input class="form-control" type="text" formControlName="email">
+                   <app-display-control-error [displayError]="isFieldValid('email')" errorMsg="Please provide a valid
+                   email Id format">
+                    </app-display-control-error>
+                </div>
+             </div>
+             <div class="col-12 col-sm-6 pl-0 staticFieldsAdduser">
+                <label>Mobile Number</label>
+                <div class="col-sm-11 pl-0">
+                   <input class="form-control" type="text" maxlength="15"  formControlName="phonenumber">
+                      <app-display-control-error [displayError]="isFieldValid('phonenumber')" errorMsg="Please provide a valid
+                      phone number format">
+                        </app-display-control-error>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="row justify-content-center mt-2">
+          <div class="col-3 col-sm-2">
+             <button (click)="onSubmit()" class="btn adduserbtn primaryBtn">save</button>
+          </div>
+          <div class="col-3 col-sm-2">
+             <button (click)="closeAddUserPopup()" class="btn adduserbtn">cancel</button>
+          </div>
+       </div>
+    </div>
+ </form>
+ <app-confirmation-dialog key="AddUserConfirmation" message="Are you sure you want to add this user?" icon="pi pi-info-circle"
+    #confirmAddUser></app-confirmation-dialog>

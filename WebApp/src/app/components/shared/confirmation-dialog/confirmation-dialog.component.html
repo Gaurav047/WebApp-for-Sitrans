@@ -1,0 +1,8 @@
+<p-confirmDialog [style]="{'z-index': '999999'}" [key]="key" appendTo="body" icon="pi pi-exclamation-triangle"  #cd
+    [baseZIndex]="100000">
+    <p-footer>
+        <button class="btn primaryBtn" type="button" pButton icon="pi pi-check" label="Yes"
+            (click)="cd.accept()"></button>
+        <button class="btn" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+    </p-footer>
+</p-confirmDialog>

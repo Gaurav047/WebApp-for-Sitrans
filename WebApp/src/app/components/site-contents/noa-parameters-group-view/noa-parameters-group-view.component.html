@@ -1,0 +1,45 @@
+<div *ngIf="showLoader" class="detailSpinnerBackground">
+    <div class="detailSpinnerContainer">
+        <img class="spinnerImg" src="../assets/gifs/spinner-grey.gif">
+    </div>
+</div>
+<div class="noGrouping container">
+    <div id="tabMenu">
+        <!-- <p-tabMenu [model]="menuItems"></p-tabMenu> -->
+        <div class="row justify-content-center pt-3 pb-1 h-58">
+            <div class="col-12 col-sm-12 d-flex justify-content-center">
+                <ul class="d-flex  p-0">
+                    <li class="pointer pl-3 pr-3" [ngClass]="{'active': selectedTabItem == item}" (click)="onTabItemSelection(item)"
+                        *ngFor="let item of menuItems">
+                        {{ item.label }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-treeTable  [columns]="cols" class="gridTreeView" [value]="noaParameterList" (onNodeExpand)="onNodeExpand($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let col of cols">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                <tr>
+                    <td>
+                        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                        {{rowData.parameterLabel}}
+                    </td>
+                    <td>{{rowData.value}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                    <tr>
+                      <td class="text-center" colspan="2">No parameters available.</td>
+                    </tr>
+                  </ng-template>
+        </p-treeTable>
+    </div>
+</div>

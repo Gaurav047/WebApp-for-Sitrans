@@ -1,0 +1,61 @@
+<div class="statusBarClass">
+  <div class="row statusBar">
+    <div class="col-9 pr-2">
+      <div class="col-12 pb-2">
+        <div class="row">
+          <div class="widthStatusBarLeft bgwhite d-inline-flex statusBarPadding align-items-center">
+            <div class="col-4">
+              <label class="pr-3">Number of Connected Devices :</label>
+              <span><img src="../../../../assets/images/Connected Devices.png"></span>
+              <span>{{sitransGridService.deviceData.deviceCount}}</span>
+            </div>
+            <div class="col-8">
+              <label class="pr-2">SITRANS MX300 Status:</label>
+              <div class="d-inline-flex mr-2"  *ngFor="let shieldStatusObj of sitransGridService.modbusShieldStatus">
+                <div data-toggle="tooltip" title="{{shieldStatusObj.tooltipText}}" class="modbusStatus">
+                  <div class="modbusNumber">{{shieldStatusObj.shieldNumber}}</div>
+                  <div class="modbusDivider"></div>
+                  <div [class.modbusGoodStausIcon]="shieldStatusObj.shieldStatus === 1" [class.modbusBadStausIcon]="shieldStatusObj.shieldStatus === 2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="widthStatusBarCenter"></div>
+          <div (click)="getScanData()" data-toggle="tooltip" title="Click here to scan" class="widthStatusBarRight bgwhite statusBarPadding text-center scanBtnStyle">
+              <label class="pr-3 pointer">Scan </label>
+              <div class="d-md-inline-block" id="scanImg"><img  ></div>
+              <span data-toggle="data-toggle" title="Maximum scan limit is exceeded.Please try again after sometime."
+                *ngIf="sitransGridService.hasMaximumScanExceeded === true"><i class="fa fa-exclamation-triangle errorOnLoad"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 bgwhite p-3">
+        <span class="siemens-label-bold-text text-left pl-3">Field Device Status</span>
+        <span (click)="onTileSelection('NONE')" class="clearFilterText"> <span class=" pl-2 pr-2">|</span> Clear Filter</span>
+        <div #tileSection class="tileSection">
+          <div *ngFor="let statusData of diagnosticsStatusData">
+            <app-status-tile (tileClickedEvent)="onTileSelection($event)" [data]="statusData" data-toggle="tooltip"
+              title="{{statusData.msg}}"></app-status-tile>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 taskBar pl-0">
+      <div class="col-12 bgwhite h-100  pt-25">
+        <div class="siemens-label-bold-text text-left mb-3">Service Status</div>
+        <div class="row">
+          <div class="col-6 d-inline-block p-3 text-left" *ngFor="let task of taskManagerList">
+            <a class="statusLink" routerLink={{task.link}}>
+              <div class="text-center"><img src={{task.img}}></div>
+              <div class="siemens-label-text serviceStatus">
+                <i [class.noStatus]="task.isActive === null" [class.red]="task.isActive === false" [class.green]="task.isActive === true"
+                  class="fa fa-circle pr-2"></i>
+                <span data-toggle="tooltip" title="{{task.msg}}"> {{task.name}}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+@import '_colors.scss';
+:host ::ng-deep th {
+    // background-color: $color-gridHeader;
+    background-color: green !important;
+}

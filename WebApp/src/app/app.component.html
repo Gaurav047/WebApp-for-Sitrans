@@ -1,0 +1,16 @@
+<header>
+    <app-header></app-header>
+</header>
+<div  *ngIf="auth.isUserAuthenticated">
+<app-navigationbar></app-navigationbar>
+</div>
+<main class="site-content">
+    <router-outlet>
+        <div *ngIf="showLoader" class="spinnerBackground">
+            <div class="spinnerContainer">
+                <img src="../assets/gifs/spinner-grey.gif">
+            </div>
+        </div>
+    </router-outlet>
+    <app-toast></app-toast>
+</main>

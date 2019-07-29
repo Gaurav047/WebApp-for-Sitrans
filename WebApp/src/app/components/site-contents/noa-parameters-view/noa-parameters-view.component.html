@@ -1,0 +1,26 @@
+<div *ngIf="showLoader" class="detailSpinnerBackground">
+  <div class="detailSpinnerContainer">
+    <img class="spinnerImg" src="../assets/gifs/spinner-grey.gif">
+  </div>
+</div>
+<p-table class="gridView" [value]="detailDeviceData">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of cols">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <td *ngFor="let col of cols">
+        {{rowData[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td class="text-center" colspan="2">No Records Found.</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,27 @@
+@import "_colors.scss";
+@import "_variables.scss";
+.dashboard {
+    // width: 100vw;
+    height: -webkit-calc(100vh - #{$header-height});
+    /* Chrome, Safari */
+    background-color: $color-bgDashboard;
+    width: 100%
+}
+
+.dasboardBgLabel {
+    background: $color-white;
+    width: 98%;
+    margin: auto;
+    position: relative;
+    top: 8px;
+    padding: 15px;
+    margin: auto;
+}
+
+.separator {
+    height: 12px;
+}
+
+.bgPanelColor {
+    background-color: white;
+}

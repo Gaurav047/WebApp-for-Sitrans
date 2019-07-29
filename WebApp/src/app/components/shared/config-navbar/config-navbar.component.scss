@@ -1,0 +1,28 @@
+@import "_colors.scss";
+.nav-pills {
+    margin-bottom: 10px;
+}
+
+
+.nav-pills>li .nav-link.active {
+    background-color: transparent;
+}
+
+.nav-pills>li .nav-link {
+    border-radius: 0;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    color: $color-black;
+    font-size: 13px;
+    font-weight: 400;
+}
+.active{
+    color: $color-black;
+    background-color: transparent;
+    border-bottom: 4px solid $color-digi-blue;
+    font-weight: 600;
+}
+.navbarMargin{
+    margin-bottom: 5%;
+}
+

@@ -1,0 +1,16 @@
+<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 configBtnMargin">
+  <button type="submit" class="saveConfigBtn btn" (click)="saveOnBoardingKey()">
+    <img src="../../../../assets/images/Save.png" alt="">&nbsp; Save Changes</button>
+  &nbsp; &nbsp;
+  <button type="submit" class="btn" (click)="cancelChanges()"><img class="cancelImg" src="../../../../assets/images/Cancel.png"
+      alt="">
+    &nbsp;Cancel</button>
+</div>
+<br>
+<h1 class="boarding-Configuration">Boarding Configuration</h1>
+<h2 class="copy-boarding-Configuration siemens-label-text">Copy Boarding Configuration</h2>
+<p class="boarding-content siemens-label-text">In order to use MindConnect, you have to copy the generated onboarding key here</p>
+<div class="rectangle-key">
+  <br>
+  <textarea type="text" class="onBoardingKey" [(ngModel)]="configKeyData"></textarea>
+</div>

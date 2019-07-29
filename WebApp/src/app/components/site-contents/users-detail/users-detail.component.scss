@@ -1,0 +1,44 @@
+@import '_colors.scss';
+.fa {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.font11 {
+    font-size: 11px;
+}
+
+.disable {
+    cursor: not-allowed;
+}
+
+.width60px {
+    width: 60px;
+}
+
+.btnClass {
+    margin: 5px;
+    float: right;
+}
+
+.editdisabledClass {
+    color: #6c757d;
+}
+
+:host ::ng-deep p-dropdown .ui-state-highlight {
+    border-color: #3F484C;
+    background-color: #3F484C;
+}
+
+:host ::ng-deep p-dropdown #usersGrid.ng-touched.ng-dirty .ui-dropdown.ui-widget {
+    border: 2px solid;
+}
+.font-size20px{
+    font-size: 20px;
+}
+.fa{
+    color:black;
+}
+.staticFieldsUserDetail{
+    height: 25px;
+}

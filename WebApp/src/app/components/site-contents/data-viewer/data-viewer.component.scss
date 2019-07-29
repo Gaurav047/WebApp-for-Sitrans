@@ -1,0 +1,55 @@
+
+.headingMargin{
+    margin-left: -1.4%;
+}
+.gridView tr:not(:first-child)>th:after{
+    display: none;
+}
+.filterImg{
+    margin-left: -15%;
+    margin-bottom: -8%;
+}
+.closeIcon{
+    margin-left: -5%;
+    color: #707070;
+
+}
+.heading-text{
+    font-size: 14px;
+    font-weight: bold;
+}
+.startDatePosition{
+    margin-left: 1%;
+}
+.endDatePosition{
+    margin-left: 1%;
+    margin-right: 8%
+}
+.download{
+    margin-right: -1%;
+    padding-top: 1%;
+}
+.dateFilter{
+    margin-left: -7%;
+    margin-right: 7%;
+}
+.filterDateMargin{
+    margin-top: 1%;
+    margin-left: -1.5%;
+}
+.errorForMsg{
+    position: absolute;   
+    z-index: -1; 
+    margin-top: 4%;   
+}
+.tableMargin{
+    margin-top: 3%;
+}
+:host ::ng-deep {
+    .ui-inputtext {
+        width: 119%;
+    }
+}
+.toDateMargin{
+    margin-left: 3%;
+}

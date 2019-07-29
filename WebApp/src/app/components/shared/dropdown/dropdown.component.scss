@@ -1,0 +1,112 @@
+.buttonDisplay {
+    font-family: 'SiemensSans-Roman';
+    width: 100%;
+    min-width: 100px;
+    height: 32px;
+    border-radius: 4px;
+    background-image: linear-gradient(to bottom, #f4f7f8, #eaeef0);
+    display: inline-block;
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #cbcdce;
+    padding: .375rem .75rem;
+    font-size: 12px;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+li {
+    display: block;
+    transition-duration: 0.5s;
+}
+
+li:hover {
+    cursor: pointer;
+    width: 100%;
+    min-width: 100px;
+    opacity: 0.5;
+    background-color: #b4b6b8;
+}
+
+li {
+    a {
+        font-family: 'SiemensSans-Roman';
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 2.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #1e1e1e;
+        padding-left: 5%;
+    }
+}
+
+li:not(:first-child):after {
+    content: ' ';
+    height: 1px;
+    position: absolute;
+    width: 100%;
+    min-width: 100px;
+    background-color: #cbcdce;
+    right: 5px;
+    left: 4%;
+}
+
+.dropdownMenuDisplay {
+    width: 100%;
+    min-width: 100px;
+    max-height: 108px;
+    background-color: #ffffff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: auto;
+}
+
+.dropdownMenuDisplay::-webkit-scrollbar-button {
+    width: 2px;
+    height: 62px;
+    background-color: #cbcdce;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 62px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #cbcdce;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+.dropdown{
+    .dropdownIcon{
+    position: relative;
+    top: 6px;
+    border: 5.5px solid #b4b6b8;
+    border-color :  black transparent transparent transparent;
+    float: right;
+    }
+}
+.dropdown.show{
+    .dropdownIcon{
+    position: relative;
+    top: 0px;
+    border: 5.5px solid #b4b6b8;
+    border-color :  transparent transparent black transparent;
+    float: right;
+    }
+}

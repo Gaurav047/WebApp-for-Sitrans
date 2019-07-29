@@ -1,0 +1,38 @@
+@import "_colors.scss";
+@import "_variables.scss";
+
+.headerCell {
+    height: auto;
+    background-color: #ebebe3;
+    min-height: 35px;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    label{
+        font-weight: bold;
+    }
+}
+
+#detailedViewTab {
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+}
+
+.active {
+    border-bottom: 4px solid $color-digi-blue;
+    font-weight: 600;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.h-58 {
+    height: 58px;
+}
+
+#detailedViewTab {
+    height: calc(100vh - 45px) !important;
+    overflow-y: auto;
+    max-height: calc(100vh - 45px) !important;
+}

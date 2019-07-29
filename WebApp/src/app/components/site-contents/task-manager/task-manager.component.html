@@ -1,0 +1,63 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-12 taskManagerDiv">
+      <h6>This feature is under development</h6>
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 mb-3">
+    <button type="submit" class="saveConfigBtn btn mr-2" (click)="saveAutoStartDetails()">
+      <img src="../../../../assets/images/Save.png" alt=""> Save Changes</button>
+    <button type="submit" class="btn ml-2 mr-2" (click)="cancelAutoStartDetails()"><img class="cancelImg" src="../../../../assets/images/Cancel.png"
+        alt=""> Cancel</button>
+  </div>
+  <!-- <div *ngIf="noChangesToSaveErr === true" class="error">** There are no changes to save</div> -->
+</div>
+
+<p-table class="gridView" [value]="taskManagerList" [columns]="cols">
+  <ng-template pTemplate="header">
+    <tr>
+        <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+            <span data-toggle="tooltip" title="{{col.header}}">{{col.header}}</span>
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+        </th>
+      <th>Auto-start service if stopped</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-task>
+    <tr>
+      <td>
+        {{task.name}}
+      </td>
+      <td>
+        {{task.status}}<span data-toggle="tooltip" title="something went wrong in action performed" *ngIf="task.isError === true"><i class="fa fa-exclamation-triangle errorOnLoad"></i></span>
+      </td>
+      <td>
+        <span *ngIf="task.isExecutionCompleted !== false">
+          <span class="pointer" data-toggle="tooltip" title="Stop the service" (click)="stopService(task)" *ngIf="task.isServiceUp === true"><img
+              src="../../../../assets/images/Stop.png"></span>
+          <span class="pointer" data-toggle="tooltip" title="Start the service" (click)="startService(task)" *ngIf="task.isServiceUp === false"><img
+              src="../../../../assets/images/Start.png"></span>
+          <span *ngIf="task.isServiceUp === true" (click)="restartService(task)" class="pointer pl-3" data-toggle="tooltip"
+            title="Restart the service"><img src="../../../../assets/images/Restart.png"></span>
+        </span>
+        <span *ngIf="task.isExecutionCompleted=== false" class="pl-3 spinner" [ngClass]="{'fa fa-spinner fa-spin':task.isExecutionCompleted === false}"></span>
+      </td>
+      <td>
+        <p class="m-auto d-flex">
+          <input type="checkbox" id="{{task.serviceId}}" name="serviceItem" (change)="onSelectDeselect(task)" [checked]="task.isAutoStart">
+        </p>
+
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td class="text-center" colspan="3">
+        <span>Task Manager Service is currently unavailable,Please reboot</span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<app-confirmation-dialog key="SaveAutoStartDetails"  message="Are you sure you want to save the changes?" icon="pi pi-info-circle" #confirmSaveAutoStart></app-confirmation-dialog>

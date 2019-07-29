@@ -1,0 +1,48 @@
+:host ::ng-deep .mat-slide-toggle {
+    .mat-slide-toggle-thumb {
+        border-radius: 0%;
+        &:before {
+            font-size: 0.6em;
+            display: flex;
+            margin: auto;
+            justify-content: center;
+            position: relative;
+            top: -3px;
+        }
+    }
+    .mat-slide-toggle-thumb {
+        background-color: #ffffff !important;
+        position: relative;
+        top: 4px;
+        right: -2px;
+        height: 16px;
+        width: 18px;
+        border-radius: 9px;
+    }
+    .mat-slide-toggle-bar {
+        background-color: #b4b6b8;
+        width: 36px;
+        height: 18px;
+        border-radius: 24px;
+    }
+}
+
+// when active state
+:host ::ng-deep .mat-checked {
+    .mat-slide-toggle-bar {
+        background-color: #30a830 !important;
+        width: 36px;
+        height: 18px;
+        border-radius: 24px;
+    }
+    .mat-slide-toggle-thumb {
+        &:before {
+            font-size: 0.6em;
+            display: flex;
+            margin: auto;
+            justify-content: center;
+            position: relative;
+            top: -3px;
+        }
+    }
+}

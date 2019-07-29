@@ -1,0 +1,61 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+   "../src/app/components/site-contents/network-settings/network-settings.component.spec.ts",
+   "../src/app/components/site-contents/data-logger-configuration/data-logger-configuration.component.spec.ts",
+   "../src/app/components/site-contents/mind-connect/mind-connect.component.spec.ts",
+   "../src/app/components/site-contents/mind-connect/mind-connect-onboarding/mind-connect-onboarding.component.spec.ts",
+   "../src/app/components/site-contents/add-user/add-user.component.spec.ts",
+   "../src/app/components/site-contents/dashbaord/dashbaord.component.spec.ts",
+   "../src/app/components/site-contents/firmware-update/firmware-update.component.spec.ts",
+   "../src/app/components/site-contents/shield-channel-availability/shield-channel-availability.component.spec.ts",
+  // "../src/app/components/site-contents/shield-parameters-view/shield-parameters-view.component.spec.ts",
+   "../src/app/components/site-contents/status-bar/status-bar.component.spec.ts",
+  // "../src/app/components/site-contents/users-detail/users-detail.component.spec.ts",
+   "../src/app/components/site-contents/siwarex-listview/siwarex-listview.component.spec.ts",
+   "../src/app/components/shared/toast/toast.component.spec.ts",
+   "../src/app/components/shared/side-navbar/side-navbar.component.spec.ts",
+   "../src/app/components/shared/parameter-configuration/parameter-configuration.component.spec.ts",
+   "../src/app/components/shared/modal-popup/modal-popup.component.spec.ts",
+   "../src/app/components/shared/dropdown/dropdown.component.spec.ts",
+   "../src/app/components/shared/display-control-error/display-control-error.component.spec.ts",
+   "../src/app/components/shared/confirmation-dialog/confirmation-dialog.component.spec.ts",
+   "../src/app/components/shared/config-navbar/config-navbar.component.spec.ts",
+   "../src/app/components/shared/config-grid/config-grid.component.spec.ts",
+   "../src/app/components/login/login.component.spec.ts",
+   "../src/app/components/header-content/navigationbar/navigationbar.component.spec.ts",
+   "../src/app/components/header-content/header/header.component.spec.ts",
+   "../src/app/services/config-services/network-settings.service.spec.ts",
+   "../src/app/services/config-services/parameter-configuration.service.spec.ts",
+   "../src/app/services/config-services/shield-channel-access.service.spec.ts",
+   "../src/app/services/shared/app.service.spec.ts",
+   "../src/app/services/shared/auth-interceptor.service.spec.ts",
+   "../src/app/services/shared/auth.guard.spec.ts",
+   "../src/app/services/shared/auth.service.spec.ts",
+   "../src/app/services/shared/config-grid.service.spec.ts",
+   "../src/app/services/shared/delay-interceptor.service.spec.ts",
+   "../src/app/services/shared/detail-view.service.spec.ts",
+   "../src/app/services/shared/device-data.service.spec.ts",
+   "../src/app/services/shared/loader.service.spec.ts",
+   "../src/app/services/shared/modal.service.spec.ts",
+   "../src/app/services/shared/side-navbar.service.spec.ts",
+   "../src/app/services/shared/toast-message.service.spec.ts",
+   "../src/app/services/shared/translate-lang.service.spec.ts",
+   "../src/app/services/navbar.service.spec.ts",
+   "../src/app/services/user.service.spec.ts",
+   // "../src/app/components/site-contents/channel-parameters-view/channel-parameters-view.component.spec.ts",
+    // "**/*.d.ts",
+     "**/*.spec.ts"
+  ]
+}

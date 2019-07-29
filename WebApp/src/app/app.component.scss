@@ -1,0 +1,44 @@
+@import "_variables.scss";
+.site-content {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    top: 43px;
+    height: -moz-calc(100vh - #{$header-height});
+    /* Firefox */
+    height: -webkit-calc(100vh - #{$header-height});
+    /* Chrome, Safari */
+    height: calc(100vh - #{$header-height});
+    /* IE9+ and future browsers */
+    // overflow-y: scroll;
+}
+.spinnerBackground {
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: rgba(48, 48, 48, 0.7);
+    z-index: 100000000;
+}
+
+.spinnerContainer {
+    position: relative;
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    font-weight: bold;
+    background: rgba(187, 187, 187, 0.5);
+}
+
+img {
+    z-index: 1100;
+    position: relative;
+    left: -30px;
+    top: -30px;
+    width: 80px;
+}

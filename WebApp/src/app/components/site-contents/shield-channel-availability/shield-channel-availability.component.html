@@ -1,0 +1,72 @@
+<!-- <button (click)="saveChanges()">Save</button> -->
+<div class="row">
+    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+        <button type="submit" class="saveConfigBtn btn" (click)="saveChanges()">
+            <img src="../../../../assets/images/Save.png" alt="">&nbsp; Save Changes</button>
+        &nbsp; &nbsp;
+        <button type="submit" class="btn" (click)="cancelChanges()"><img class="cancelImg"
+                src="../../../../assets/images/Cancel.png" alt="">
+            &nbsp;Cancel</button>
+        &nbsp; &nbsp;
+        <div *ngIf="errorMessage()" class="messageText">
+            <!-- <div class="siemens-label-text"><i class="fa fa-info-circle p-1"></i>{{errorInfoMessage}}</div> -->
+            <span><img class='imgSize' src="../../../../assets/images/info icon.png" alt=""></span>
+            <span class="siemens-label-text">{{errorInfoMessage}}</span>
+        </div>
+        <div *ngIf="!errorMessage()" class="messageText">
+            <span class="siemens-label-bold-text"><img class='imgSize' src="../../../../assets/images/info icon.png"
+                    alt=""></span>
+            <div class="msgMargin">
+                <div class="siemens-label-text infoText">{{shieldinfoMessage}}</div>
+                <div class="siemens-label-text infoText">{{scaninfoMessage}}</div>
+                <div class="siemens-label-text infoText">{{multiDropMessage}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+        <div>
+            <button [disabled]="scanTimeOutError === true" type="submit" class="btn btnAlign" (click)="scanData($event)"><img
+                    src="../../../../assets/images/Scan - button.png" alt="">&nbsp;
+                Scan</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row no-padding">
+        <div class="col-md-6 shield-box">
+            <div (click)="loadChannels(shields)" class="shield-cell alternateRow" [ngClass]="shieldCell(shields)"
+                *ngFor="let shields of shieldData">
+                <div class="pull-left p-1">{{shields.name}}</div>
+                <span *ngIf="shields.isShieldConnected" class="col-md-5 col-xs-5 col-sm-5 col-lg-5 connectionFont"><img
+                        class="p-1" src="../../../../assets/images/Shield not connected.png"
+                        alt="">{{shieldConnection}}</span>
+                <div class="pull-right p-1 leftToggle">
+                    <mat-slide-toggle value="{{shields?.isActive}}" [checked]="shields?.isActive"
+                        (change)="onShieldtoggle($event,shields)">
+                    </mat-slide-toggle>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 channel-box">
+            <div class="channel-cell" *ngFor="let channels of channelData;let i=index;">
+                <div class="pull-left p-1">{{channels.name}}</div>
+                <span *ngIf="channels.isChannelConnected === true"
+                    class="col-md-5 col-xs-5 col-sm-5 col-lg-5 connectionFont"><img class="p-1"
+                        src="../../../../assets/images/Shield not connected.png" alt="">{{deviceConnection}}</span>
+                <div class="pull-right p-1 rightToggle">
+                    <mat-slide-toggle value="{{channels?.isActive}}" [checked]="channels?.isActive"
+                        (change)="onChanneltoggle($event,channels)">
+                    </mat-slide-toggle>
+                </div>
+                <span>
+                    <app-dropdown class="pull-right dropDownMargin p-1" id="multiDrop_{{i}}"
+                        [disableButton]="channels.disableMultiDrop"
+                        (SelectDropdownEvent)="onDropdownChange($event,i,channels.shieldId)"
+                        [selectedValue]="multiDropValue[i]" [option]="multiDropOption" [hoverTitle]="multiDropTitle">
+                    </app-dropdown>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

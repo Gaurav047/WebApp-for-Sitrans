@@ -1,0 +1,8 @@
+<div class="text-center">
+  <div class="tileText {{data?.tileClass}}"  (click)="filterDiagnosticStateData(data?.value, $event)">
+    <div class="tile m-3 {{data?.tileClass}}">
+      <div class="tileNum">{{sitransListService.diagnosticStateCount[data?.value]}}</div>
+    </div>
+    <div >{{data?.statusTxt}}</div>
+  </div>
+</div>

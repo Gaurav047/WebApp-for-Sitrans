@@ -1,0 +1,138 @@
+@import "_variables.scss";
+@import "_fonts.scss";
+* {
+    box-sizing: border-box;
+}
+
+.tileRatio{
+    width: 130px;
+    height: 120px;
+}
+.tile {
+   @extend .tileRatio;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: normal;
+    border-width: 4px;
+    border-style: solid;
+    display: flex;
+    &:hover {
+        background-color: $pidg-color-darkgray;
+        cursor: pointer;
+    }
+    &.firstTile {
+        border-color: #30A830;
+        &::before {
+            border-color: #30A830 transparent transparent #30A830;
+        }
+        &:hover{
+            color: #30A830;
+        }
+    }
+    &.secondTile {
+        border-color: #50BED7;
+        &::before {
+            border-color: #50BED7 transparent transparent #50BED7;
+        }
+        &:hover{
+            color: #50BED7;
+        }
+    }
+    &.thirdTile {
+        border-color: #EC3041;
+        &::before {
+            border-color: #EC3041 transparent transparent #EC3041;
+        }
+        &:hover{
+            color: #EC3041;
+        }
+    }
+    &.forthTile {
+        border-color: #FFB900;
+        &::before {
+            border-color: #FFB900 transparent transparent #FFB900;
+        }
+        &:hover{
+            color: #FFB900;
+        }
+    }
+    &.fifthTile {
+        border-color: #EB780A;
+        &::before {
+            border-color: #EB780A transparent transparent #EB780A;
+        }
+        &:hover{
+            color: #EB780A;
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        border: 16px solid;
+    }
+   
+}
+
+.tileNum {
+    font-size: 50px;
+    margin: auto;
+}
+
+.tileText {
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+    &:hover {
+        cursor: pointer;
+    }
+    &.firstTile {
+        &:hover{
+            color: #30A830;
+        }
+    }
+    &.secondTile {
+       
+        &:hover{
+            color: #50BED7;
+        }
+    }
+    &.thirdTile {
+       
+        &:hover{
+            color: #EC3041;
+        }
+    }
+    &.forthTile {
+        &:hover{
+            color: #FFB900;
+        }
+    }
+    &.fifthTile {
+        &:hover{
+            color: #EB780A;
+        }
+    }
+}
+// height and width is set same as that to the tile 
+.onTileSelection {
+   // background-color: $pidg-color-darkgray;
+        &.firstTile {            
+                color: #30A830;    
+                       
+        }
+        &.secondTile {
+                color: #50BED7;           
+        }
+        &.thirdTile {           
+                color: #EC3041;            
+        }
+        &.forthTile {           
+                color: #FFB900;           
+        }
+        &.fifthTile {            
+                color: #EB780A;         
+    }
+   
+    
+}

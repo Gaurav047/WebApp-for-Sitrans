@@ -1,0 +1,13 @@
+@import "_colors.scss";
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
+    border: none;
+}
+
+.btn.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
+    background-color: $color-grey;
+    color: $color-black;
+}
+
+.btn.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left:hover {
+    background-color: $color-grey;
+}

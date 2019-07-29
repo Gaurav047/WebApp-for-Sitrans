@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+    <button type="submit" class="saveConfigBtn btn" (click)="saveConfigData()" [disabled]='disableBtn'>
+      <img src="../../../../assets/images/Save.png" alt="">&nbsp; Save Changes</button>
+    &nbsp; &nbsp;
+    <button type="submit" class="btn" (click)="cancelConfig()"><img class="cancelImg" src="../../../../assets/images/Cancel.png"
+        alt="">
+      &nbsp;Cancel</button>
+  </div>
+  <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 minConnectBtnMargin">
+    <button type="submit" class="btn"><img src="../../../../assets/images/Copy - data logger.png" alt="">&nbsp; Copy
+      settings from Data Logger</button>
+    &nbsp; &nbsp;
+    <button type="submit" class="btn"><img class="cancelImg" src="../../../../assets/images/Offline.png" alt="">&nbsp;
+      Go Offline</button>
+  </div>
+</div>
+<br>
+<app-parameter-configuration [configData]='configData' (disableSaveBtn)='disableStatus($event)' (setFrequencyValue)='commonFrequency($event)' [savedFrequency]='frequency'></app-parameter-configuration>
+<br>
+<!-- <div *ngIf="!freqSelected">
+  <app-display-control-error [displayError]="true" errorMsg="Please select the Frequency">
+  </app-display-control-error>
+</div> -->

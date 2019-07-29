@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <button class="buttonDisplay" type="button" data-toggle="dropdown" title={{hoverTitle}} [disabled]="disableButton">
+    {{selectedValue.label}}
+    <i class="dropdownIcon"></i>
+  </button>
+  <!-- the dropdown is currently used only for frequency label as the selected value on click of dropdown will be the frequency value of the frequency selected by user-->
+  <ul class="dropdown-menu dropdownMenuDisplay" id="dropMenu">
+    <li *ngFor="let item of option;" (click)="onSelectDropdown(item)">
+      <a data-toggle="tooltip" class="dropdown-item-a">{{item.label}}</a></li>
+  </ul>
+</div>

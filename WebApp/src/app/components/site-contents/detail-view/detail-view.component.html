@@ -1,0 +1,32 @@
+<div id="detailedViewTab" class="container-fluid">
+  <div class="row headerCell align-items-center">
+    <div class="col-6 col-sm-2 pointer">
+        <span (click)="closeSidebar()"> <i class="fa fa-times closeIcon"></i><label class="pointer pl-1">Close</label></span>
+    </div>
+    <div class="col-6 col-sm-2">
+        <label>SITRANS MX300:</label>
+        <span class="pl-1">{{params?.shieldNumber}}</span>
+    </div>
+    <div class="col-6 col-sm-2">
+        <label>Channel Number:</label>
+        <span class="pl-1">{{params?.displayChannelNumber}}</span>
+    </div>
+    <div class="col-6 col-sm-2">
+        <label>Model:</label>
+        <span class="pl-1">{{params?.model}}</span>
+    </div>
+    <div class="col-6 col-sm-2">
+        <label>Device Revision:</label>
+        <span class="pl-1">{{params?.deviceRevision}}</span>
+    </div>
+    <div class="col-6 col-sm-2">
+        <label>Status:</label>
+        <span class="pl-1">{{params?.status}}</span>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12">
+      <ng-template appContentHost></ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@import "_variables.scss";
+.progressBar {
+    width: 100%;
+  }
+  
+  :host ::ng-deep .progressBar {
+    .mat-progress-bar-buffer {
+      background-color: #cfd6d6;
+    }
+    .mat-progress-bar-secondary.mat-progress-bar-fill.mat-progress-bar-element::after {
+      background-color:$pidg-color-979999;
+      border-top: $pidg-progressbar-border;
+      border-bottom: $pidg-progressbar-border;
+    }
+    .mat-progress-bar-primary.mat-progress-bar-fill.mat-progress-bar-element::after {
+      background-color:$pidg-color-979999;
+      border-top: $pidg-progressbar-border;
+      border-bottom:$pidg-progressbar-border;
+    }
+    .mat-progress-bar-buffer.mat-progress-bar-element {
+      border-top: $pidg-progressbar-border;
+      border-bottom: $pidg-progressbar-border;
+    }
+  }

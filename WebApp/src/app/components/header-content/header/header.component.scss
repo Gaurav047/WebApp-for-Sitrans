@@ -1,0 +1,87 @@
+@import "_colors.scss";
+#MainHeaderSection {
+    background-color: $header-color;
+    color: $color-white;
+    position: fixed;
+    z-index: 6;
+}
+
+.row.headerHeight {
+    height: 45px;
+}
+
+.hamburgerIcon {
+    cursor: pointer;
+    &::before {
+        content: "\f0c9";
+        position: absolute;
+        top: -20px;
+        font-family: FontAwesome;
+        font-size: 3em;
+    }
+}
+
+.userIcon {
+    cursor: pointer;
+    font-size: 31px;
+    margin-right: -24%;
+}
+
+.userProfile {
+    form.row {
+        padding: 10px;
+    }
+   
+    label {
+        font-family: "SiemensSans-Roman";
+        font-size: 12px;
+    }
+}
+.divider {
+    border-bottom: 1px solid #c0c0c0 !important;
+    width: 100%;
+}
+form label {
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+}
+
+.widthProfileOverlay {
+    width: 400px !important;
+}
+.editText {
+    text-decoration: underline;
+    cursor: pointer;
+    color: darkblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+    margin-left: 25px;
+}
+.editProfileIcon{
+   font-size: 100px;
+}
+.waitToVerifyPasswordText{
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+    color: green;
+    width: 100%;
+}
+.closeIconHeight{
+    height: 30px;
+}
+.wrapLabel{
+    display: inline;
+    overflow-wrap: break-word;
+}
+.topCornerHeader{
+    margin-left: -2.5%;
+}
+.staticFieldsHeader{
+    height: 90px;
+}
+.siemens-title-text{
+    font-size:14px!important;
+    
+}

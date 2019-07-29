@@ -1,0 +1,48 @@
+<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3 frequencyAlign">
+  <!-- Dropdown component called and the selected value in a dropdown will be the frequencyId coming up in rowdata -->
+  <label class="siemens-label-bold-text frequencylabel">Select Frequency:</label>
+  <app-dropdown id="frequencyVal" name="frequencyVal" (SelectDropdownEvent)="onDropdownChange($event)"
+    [option]="frequencySelector" [selectedValue]="displayFrequencyLabel(savedFrequency)">
+  </app-dropdown>
+</div>
+<p-treeTable class="gridTreeView" [value]="configData" [columns]="cols">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns;">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+    <tr>
+      <td>
+        <div class="row">
+          <p-treeTableToggler class="col-md-2 col-lg-2 col-sm-2 col-xs-2" [rowNode]="rowNode"></p-treeTableToggler>
+          <span class="col-md-6 col-lg-6 col-sm-6 col-xs-6">{{rowData.name}}</span>
+          <!-- <span>{{rowData.frequency}}</span> -->
+          <span class="col-md-4 col-lg-4 col-sm-4 col-xs-4" *ngIf="toggleDisplay(rowData.name)">
+            <mat-slide-toggle value="{{rowData?.isSelected}}" [checked]="rowData?.isSelected"
+              (change)="onChanneltoggle($event,rowNode)">
+            </mat-slide-toggle>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="row">
+          <span class="col-md-8 col-lg-8 col-sm-8 col-xs-8">{{rowData.paraName}}</span>
+          <span class="col-md-4 col-lg-4 col-sm-4 col-xs-4"
+            *ngIf="rowData.paraName!==null && rowData.paraName!==undefined">
+            <mat-slide-toggle value="{{rowData?.isSelected}}" [checked]="rowData?.isSelected"
+              (change)="onParamToggle($event,rowNode)">
+            </mat-slide-toggle>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td class="text-center" colspan="2">No Records Found.</td>
+    </tr>
+  </ng-template>
+</p-treeTable>

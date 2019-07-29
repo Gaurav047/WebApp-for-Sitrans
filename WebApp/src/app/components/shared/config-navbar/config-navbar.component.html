@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row navbarMargin">
+    <div class="col-12 col-sm-12 d-flex justify-content-center">
+      <ul id="navbarList" class="nav nav-pills">
+        <li  class="nav-item" *ngFor="let obj of configMenuObject" [routerLinkActive]="'active'">
+          <a *ngIf="(isAdmin === true || (isAdmin === false && obj.name !== 'Task Manager'))" class="nav-link" routerLink={{obj.link}}>
+            {{obj.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

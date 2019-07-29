@@ -1,0 +1,206 @@
+<!--Resuable component-->
+<div id="MainHeaderSection" class="container-fluid">
+  <div class="row headerHeight align-items-center">
+    <div class="pr-5 pl-2">
+      <div *ngIf="auth.isUserAuthenticated">
+        <!-- hamburger icon -->
+        <img src="../../../../assets/images/Menu - hamburger - icon.png" alt="" class="hamburgerIcon" *ngIf="navService.hamburgerIconVisible"
+          (click)="openNavBar()">
+        <img class="closeIconHeight" src="../../../../assets/images/Menu - close.png" alt="" *ngIf="!navService.hamburgerIconVisible"
+          (click)="openNavBar()">
+      </div>
+    </div>
+    <div class="col-3 col-sm-2 col-md-2 col-lg-1 topCornerHeader pr-0">
+      <svg width="100" height="45" viewBox="0 1 100 10" xmlns="http://www.w3.org/2000/svg">
+        <path d="M.236 11.579V9.293c1.308.41 2.466.615 3.474.615 1.39 0
+          2.084-.365 2.084-1.095
+          0-.272-.101-.5-.303-.686-.207-.195-.74-.469-1.592-.816C2.367 6.684
+          1.37 6.15.904 5.709.3 5.128 0 4.392 0 3.505 0 2.361.44 1.49 1.316.89
+          2.182.297 3.312 0 4.704 0c.768 0 1.88.141
+          3.332.421V2.62c-1.082-.429-2.084-.644-3.012-.644-1.305
+          0-1.958.358-1.958 1.07 0 .269.132.485.394.655.22.136.823.423 1.809.865
+          1.42.627 2.365 1.171 2.837 1.634.56.55.84 1.26.84 2.134 0 1.252-.548
+          2.207-1.646 2.865-.887.535-2.04.802-3.454.802-1.195
+          0-2.4-.14-3.61-.421zm10.545.186h3.251V.202h-3.251v11.563zm6.235
+          0V.202h8.339v2.09h-5.207v2.612h4.534v1.907h-4.534v2.746h5.342v2.208h-8.474zm10.597
+          0V.202h4.216l2.929 7.389L37.76.202h4.004v11.563H38.68V3.58l-3.414
+          8.303h-2.014l-3.35-8.303v8.186h-2.29zm17.133
+          0V.202h8.34v2.09H47.88v2.612h4.53v1.907h-4.53v2.746h5.34v2.208h-8.474zm10.615
+          0V.202h3.768l3.998 7.74V.203h2.29v11.563h-3.662L57.651
+          3.92v7.845h-2.29zm12.364-.186V9.293c1.298.41 2.455.615 3.474.615 1.39
+          0 2.086-.365 2.086-1.095
+          0-.272-.1-.5-.296-.686-.207-.195-.74-.469-1.6-.816-1.527-.62-2.528-1.155-2.997-1.602-.601-.577-.904-1.314-.904-2.214
+          0-1.137.44-2.005 1.317-2.605.866-.593 1.997-.89 3.39-.89.784 0
+          1.798.125 3.043.373l.287.048V2.62c-1.08-.429-2.087-.644-3.019-.644-1.3
+          0-1.95.358-1.95 1.07 0 .269.13.485.394.655.208.13.815.419 1.817.865
+          1.41.627 2.354 1.171 2.83 1.634.558.55.838 1.26.838 2.134 0 1.252-.545
+          2.207-1.637 2.865-.893.535-2.047.802-3.461.802-1.197
+          0-2.4-.14-3.612-.421z"
+          fill="#FFF" fill-rule="evenodd" />
+      </svg>
+    </div>
+    <div class="siemens-title-text col-5 col-sm-4 col-md-3 col-lg-2 pl-0">
+      FileServer
+    </div>
+    <!-- user icon in header -->
+    <div (click)="userProfile.toggle($event)" class="col-1 col-sm-3 col-md-1 col-lg-3 offset-md-4 offset-lg-5 userIcon text-right">
+      <div *ngIf="auth.isUserAuthenticated">
+        <div>
+          <i class="fa fa-user-circle userIcon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-overlayPanel #userProfile (onHide)="resetProfileViewonHide()" (onShow)="getUserProfileByUserId()">
+  <div class="container userProfile widthProfileOverlay">
+    <div *ngIf="userProfileModel?.isProfileInEditMode===false && userProfileModel?.ischangePasswordClicked=== false">
+      <div class="row">
+        <div class="col-sm-4">
+          <i class="fa fa-user-circle userIcon editProfileIcon"></i>
+        </div>
+        <div class="col-sm-8">
+          <div><span class="pr-1 siemens-label-bold-text">Name:</span><label class="wrapLabel">{{userProfileModel?.userName}}</label></div>
+          <div><span class="pr-1 siemens-label-bold-text">Role:</span><label class="wrapLabel">
+              {{userProfileModel?.role}} </label></div>
+          <div><span class="pr-1 siemens-label-bold-text">Email Id:</span><label class="wrapLabel"><span *ngIf="userProfileModel?.emailId !== ''">{{userProfileModel?.emailId}}
+              </span><span *ngIf="userProfileModel?.emailId === ''">- NA -</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 editText">
+          <span (click)="goToEditMode($event)">Edit Profile</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 editText">
+          <span (click)="goToChangePasswordMode($event);"> Change Password</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form name="form" #f="ngForm" [mustMatch]="['newPassword', 'confirmPassword']" novalidate>
+    <div class="container">
+      <div *ngIf="userProfileModel?.isProfileInEditMode=== true
+      ||userProfileModel?.ischangePasswordClicked=== true">
+        <div class="row" *ngIf="userProfileModel?.isProfileInEditMode=== true
+          ||userProfileModel?.ischangePasswordClicked=== true">
+          <div class="col-sm-7 offset-sm-4 d-sm-inline-flex
+            justify-content-sm-end pt-2">
+            <button type="submit" class="btn mr-3" (click)="onSubmit()">
+              Save</button>
+            <button (click)="cancelProfileEdit()" type="reset" class="btn"> Cancel</button>
+          </div>
+        </div>
+      </div>
+      <!--Edit mode of change password starts-->
+      <div *ngIf="userProfileModel?.ischangePasswordClicked===true">
+        <div class="row">
+          <div class="col-sm-5">
+            <span class="siemens-label-bold-text">Change Password</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 form-group">
+            <label for="currentPassword">Current Password <span class="arsenic">*</span></label>
+            <input type="password" class="form-control" [(ngModel)]="userProfileModel.currentPassword" #currentPassword="ngModel"
+              name="currentPassword" (ngModelChange)="resetErrorOnValueChange()" required>
+            <!--Mandatory check-->
+            <div *ngIf="f.submitted && currentPassword.invalid" class="error">
+              <div *ngIf="currentPassword.errors.required">Please provide current password</div>
+            </div>
+            <!--invalid password error-->
+            <div class="error" *ngIf="userProfileModel?.waitForPasswordVerifyMsg === false && userProfileModel?.isCurrentPasswordInvalidErr === true">Please
+              provide a valid current password</div>
+            <!-- wait for password error-->
+            <div *ngIf="userProfileModel?.waitForPasswordVerifyMsg === true" class="waitToVerifyPasswordText">Please
+              wait!!!! , verifying your password</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 form-group">
+            <label for="newPassword">New Password <span class="arsenic">*</span></label>
+            <input type="password" class="form-control" [(ngModel)]="userProfileModel.newPassword" #newPassword="ngModel"
+              name="newPassword" minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,15}$"
+              required>
+            <div *ngIf="f.submitted && newPassword.invalid" class="error">
+              <div *ngIf="newPassword.errors.minlength">Password must be of at
+                least 8 characters</div>
+              <div *ngIf="newPassword.errors.required">Please provide a new password</div>
+              <div *ngIf="newPassword.errors.pattern">Password must have atleast  at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, space is not allowed.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 form-group">
+            <label for="confirmPassword">Confirm Password <span class="arsenic">*</span></label>
+            <input type="password" class="form-control" [(ngModel)]="userProfileModel.confirmPassword" #confirmPassword="ngModel"
+              name="confirmPassword" required>
+            <div *ngIf="f.submitted && confirmPassword.invalid" maxlength="15" class="error">
+              <div *ngIf="confirmPassword.errors.mustMatch">Passwords must
+                match</div>
+              <div *ngIf="confirmPassword.errors.required">Please confirm the new password</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Edit mode of change password ends-->
+
+      <!--Edit mode of profile edit starts-->
+      <div *ngIf="userProfileModel?.isProfileInEditMode===true">
+        <div class="row">
+          <div class="col-sm-5">
+            <span class="siemens-label-bold-text">Edit Profile</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="email">Email Address</label>
+            <input type="text" class="form-control" [(ngModel)]="userProfileModel.emailId" name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+              #email="ngModel" maxlength="50">
+            <div *ngIf="f.submitted && email?.invalid" class="error">
+              <div *ngIf="email.errors?.pattern">
+                Please provide email in a valid format
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="phoneNumber">Mobile Number</label>
+            <input type="text" class="form-control" [(ngModel)]="userProfileModel.phoneNumber" name="phoneNumber"
+              pattern="^[0-9-+()]*$" maxlength="15" #phoneNumber="ngModel">
+            <div *ngIf="f.submitted && phoneNumber.invalid" class="error">
+              <div *ngIf="phoneNumber.errors?.pattern">Please provide a valid
+                phone number format</div>
+              <div *ngIf="phoneNumber.errors?.maxlength">Phone number should
+                not exceed 15 characters</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="username">Display Name <span class="arsenic"> *</span></label>
+            <input type="text" class="form-control" [(ngModel)]="userProfileModel.userName" name="userName" #userName="ngModel"
+              maxlength="25" required>
+            <div *ngIf="f.submitted && userName.invalid" class="error">
+              <div *ngIf="userName.errors?.required">Please provide a user name</div>
+            </div>
+          </div>
+          <div class="col-sm-6 w100 form-group">
+            <label for="language">Display Language</label>
+            <app-dropdown id="languageDD" name="language" (SelectDropdownEvent)="onLanguageSelectChange($event)"
+              [option]="languageList" [selectedValue]="userProfileModel?.language"></app-dropdown>
+          </div>
+        </div>
+      </div>
+      <!--Edit mode of profile edit ends-->
+
+    </div>
+    <div class="divider mb-3">
+    </div>
+    <div class="row justify-content-center">
+      <button (click)="auth.logout();userProfile.hide();" class="btn
+          primaryBtn"> Sign Out</button>
+    </div>
+  </form>
+</p-overlayPanel>

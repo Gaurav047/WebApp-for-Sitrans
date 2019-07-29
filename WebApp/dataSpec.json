@@ -1,0 +1,634 @@
+[
+    {
+        "parameterKey": "OrderNumber",
+        "displayName": "Order Number",
+        "format": "string32",
+        "length": 32,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 6058,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SerialNumber",
+        "displayName": "Serial Number",
+        "format": "string32",
+        "length": 32,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 6042,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SoftwareRevision",
+        "displayName": "FW Version",
+        "format": "string16",
+        "length": 16,
+        "permissions": "r",
+        "defaultValue": "",
+        "minimum": "",
+        "maximum": "",
+        "address": 6138,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "HardwareRevision",
+        "displayName": "Hardware Version",
+        "format": "string16",
+        "length": 16,
+        "permissions": "r",
+        "defaultValue": "1",
+        "minimum": "0",
+        "maximum": "255",
+        "address": 6026,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "HWDeviceID",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "15",
+        "address": 6178,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SensorManufacturer",
+        "displayName": "Sensor Manufacturer",
+        "format": "string24",
+        "length": 24,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 1000,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SensorOrderNumber",
+        "displayName": "Sensor Order Number",
+        "format": "string24",
+        "length": 24,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 1012,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ChannelTag",
+        "format": "string24",
+        "length": 24,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": [
+            1024,
+            1036,
+            1048,
+            1060
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ChannelActive",
+        "format": "unsigned16",
+        "displayName": "Channel Active",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "1",
+        "minimum": "0",
+        "maximum": "1",
+        "address": [
+            1073,
+            1074,
+            1075,
+            1076
+        ],
+        "DataEncode": {
+            "0": "OFF",
+            "1": "ON"
+        }
+    },
+    {
+        "parameterKey": "SensorType",
+        "displayName": "Sensor Type",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": [
+            1077,
+            1078,
+            1079,
+            1080
+        ],
+        "DataEncode": {
+            "0": "4-Wire",
+            "1": "6-Wire"
+        }
+    },
+    {
+        "parameterKey": "PVSampleRate",
+        "displayName": "Sample Rate",
+        "format": "float",
+        "length": 4,
+        "permissions": "r/w",
+        "defaultValue": "200",
+        "minimum": "5.0",
+        "maximum": "600.0",
+        "address": [
+            1081,
+            1083,
+            1085,
+            1087
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "GridFrequency",
+        "displayName": "Grid Frequency",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "1",
+        "minimum": "0",
+        "maximum": "2",
+        "address": [
+            1089,
+            1090,
+            1091,
+            1092
+        ],
+        "DataEncode": {
+            "0": "OFF",
+            "1": "50 Hz",
+            "2": "60 Hz"
+        }
+    },
+    {
+        "parameterKey": "FrequencyLowPassFilter",
+        "displayName": "FrequencyLowPassFilter",
+        "format": "float",
+        "length": 4,
+        "permissions": "r/w",
+        "defaultValue": "2.0",
+        "minimum": "0.05",
+        "maximum": "50.0",
+        "address": [
+            1093,
+            1095,
+            1097,
+            1099
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "OrderNoLowPassFilter",
+        "displayName": "Order No Low Pass Filter",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "4",
+        "minimum": "1",
+        "maximum": "4",
+        "address": [
+            1101,
+            1102,
+            1103,
+            1104
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "DepthAverageFilter",
+        "displayName": "Depth Average Filter",
+        "format": "float",
+        "length": 4,
+        "permissions": "r/w",
+        "defaultValue": "0.02",
+        "minimum": "0.01",
+        "maximum": "10",
+        "address": [
+            1105,
+            1107,
+            1109,
+            1111
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "CharacteristicValue",
+        "displayName": "Sensor Characteristic Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r/w",
+        "defaultValue": "4.0",
+        "minimum": "-4.4",
+        "maximum": "4.4",
+        "address": [
+            1113,
+            1115,
+            1117,
+            1119
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "OffsetValue",
+        "displayName": "Sensor Offset Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "-20000.0",
+        "maximum": "20000.0",
+        "address": [
+            1121,
+            1123,
+            1125,
+            1127
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ShortCircuitRecoveryTime",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "10",
+        "minimum": "0",
+        "maximum": "1000",
+        "address": 1157, 
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "RefreshCounterCH",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "0xFFFF",
+        "address": [
+            2000,
+            2001,
+            2002,
+            2003
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "UnfilteredPV",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": [
+            2004,
+            2006,
+            2008,
+            2010
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "MeasurementValue",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": [
+            2012,
+            2014,
+            2016,
+            2018
+        ],
+        "DataEncode": null
+    },
+    {
+        "displayName":"Diagnostic Info",
+        "parameterKey": "MeasurementDiagnostics",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": [
+            2020,
+            2021,
+            2022,
+            2023
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "EXCVoltage",
+        "displayName": "Excitation Voltage",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "9.9",
+        "address": 2024,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ImpedanceValue",
+        "displayName": "Impedance Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "10000",
+        "address": [
+            2026,
+            2028,
+            2030,
+            2032
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SenseVoltage",
+        "displayName": "Sense Voltage",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "10000",
+        "address": [
+            2034,
+            2036,
+            2038,
+            2040
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ModuleStatus",
+        "displayName": "Status",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 2050,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "Temperature",
+        "displayName": "Temperature",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "-50",
+        "maximum": "150",
+        "address": 2052,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "EXCCurrent",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "199.9",
+        "address": [
+            2042,
+            2044,
+            2046,
+            2048
+        ],
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "SetUserDefault",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 3000,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "Address",
+        "displayName": "RS485 address",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "",
+        "maximum": "",
+        "address": 4000,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "Baudrate",
+        "displayName": "RS485 Baudrate",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "2",
+        "minimum": "0",
+        "maximum": "4",
+        "address": 4002,
+        "DataEncode": {
+            "0": "9600 bits/s",
+            "1": "19200 bits/s",
+            "2": "38400 bits/s",
+            "3": "57600 bits/s",
+            "4": "115200 bits/s"
+        }
+    },
+    {
+        "parameterKey": "Parity",
+        "displayName": "RS485 Parity",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "2",
+        "address": 4003,
+        "DataEncode": {
+            "0": "even",
+            "1": "odd",
+            "2": "no parity"
+        }
+    },
+    {
+        "parameterKey": "DataBits",
+        "displayName": "RS485 data bits",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "1",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4004,
+        "DataEncode": {
+            "0": "7 data bits",
+            "1": "8 data bits"
+        }
+    },
+    {
+        "parameterKey": "StopBits",
+        "displayName": "RS485 stop bits",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4005,
+        "DataEncode": {
+            "0": "1 stop bit",
+            "1": "2 stop bits"
+        }
+    },
+    {
+        "parameterKey": "ByteswapChar",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4006,
+        "DataEncode": {
+            "0": "no swap",
+            "1": "swap bytes"
+        }
+    },
+    {
+        "parameterKey": "ByteswapInt",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4007,
+        "DataEncode": {
+            "0": "big endian (MSB first)",
+            "1": "little endian (LSB first)"
+        }
+    },
+    {
+        "parameterKey": "ByteswapFloat",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4008,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "Wordswap",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "1",
+        "address": 4009,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "ModbusDelay",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r/w",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "500",
+        "address": 4010,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "RefreshCounter",
+        "displayName": "Refresh Counter",
+        "format": "unsigned16",
+        "length": 2,
+        "permissions": "r",
+        "defaultValue": "0",
+        "minimum": "0",
+        "maximum": "0xFFFF",
+        "address": 5000,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "MeasurementValueCH0",
+        "displayName": "Measurement Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": 2012,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "MeasurementValueCH1",
+        "displayName": "Measurement Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": 2014,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "MeasurementValueCH2",
+        "displayName": "Measurement Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": 2016,
+        "DataEncode": null
+    },
+    {
+        "parameterKey": "MeasurementValueCH3",
+        "displayName": "Measurement Value",
+        "format": "float",
+        "length": 4,
+        "permissions": "r",
+        "defaultValue": "0x7FFFFFFF",
+        "minimum": "0x80000000",
+        "maximum": "0x7FFFFFFF",
+        "address": 2018,
+         "DataEncode": null
+    }
+]

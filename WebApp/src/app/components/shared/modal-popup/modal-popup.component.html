@@ -1,0 +1,21 @@
+<div *ngIf="isComponentLoad === true" class="ui-rtl">
+  <p-dialog [(visible)]="visible" [modal]="true" [responsive]="true" [width]="600" [minWidth]="200" [minY]="70" [maximizable]="true"
+    [baseZIndex]="10000">
+    <p-header>
+      User Detail
+    </p-header>
+    <ng-template appContentHost></ng-template>
+    <p-footer *ngIf="isDefaultBtnVisible === true">
+      <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+      <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-dialog>
+</div>
+<p-dialog *ngIf="isComponentLoad === false" [(visible)]="visible" [modal]="true" [responsive]="true" [width]="600" [minWidth]="200" [minY]="70" [maximizable]="true"
+    [baseZIndex]="10000">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+    <p-footer *ngIf="isDefaultBtnVisible === true">
+      <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+      <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-dialog>

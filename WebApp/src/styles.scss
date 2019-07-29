@@ -1,0 +1,390 @@
+/* You can add global styles to this file, and also import other style files */
+
+// navigation side bar starts
+@import '_colors.scss';
+// Importing siemens font 
+@font-face {
+    font-family: "SiemensSans-Roman";
+    src: url(./assets/fonts/SiemensSans-Roman.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "SiemensSans-Bold";
+    src: url(./assets/fonts/SiemensSans-Bold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "SiemensSans-Italic";
+    src: url(./assets/fonts/SiemensSans-Italic.otf) format("opentype");
+}
+
+// Grid and grid tree view Varibales Declaration
+$gridHeaderBGColor: #ebebe3;
+$gridHeaderFontSize:12px;
+$gridContentFontSize :12px;
+$gridHeaderFontFamily:"SiemensSans-Bold";
+$gridContentFontFamily:"SiemensSans-Roman";
+$gridCellColor:#efefef;
+// shield status colors
+$bgWhite:white;
+$bgStatusGood:#30a830;
+$bgStatusBad:#ec3041;
+body {
+    min-height: 100%;
+}
+
+.ui-sidebar-mask {
+    z-index: 5 !important;
+}
+
+.textWrapper {
+    // overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+button img {
+    width: 20px;
+    padding-right: 3px;
+}
+
+.btn {
+    font-size: 12px !important;
+    &:hover:enabled {
+        background: #4CA9C4 !important;
+        color: #ffffff;
+    }
+    &:focus {
+        outline: none;
+    }
+    height: 48px;
+    border-radius: 4px;
+    background-color: #cbcdce !important;
+}
+
+.gridTreeView {
+    .ui-treetable .ui-treetable-tbody>tr>td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 25px;
+        font-family: $gridContentFontFamily;
+        font-size: $gridContentFontSize;
+    }
+    .ui-treetable .ui-treetable-thead>tr>th {
+        border: 0;
+    }
+    .ui-treetable .ui-treetable-tbody>tr>td {
+        border: 0;
+    }
+    .ui-treetable .ui-treetable-tbody>tr>td {
+        border-bottom: 1px solid #efefef;
+        background-color: inherit;
+    }
+    .ui-treetable .ui-treetable-thead>tr>th {
+        font-size: $gridHeaderFontSize;
+        font-family: $gridHeaderFontFamily;
+        text-align: left;
+        padding-left: 25px !important;
+        border-bottom: 0px !important;
+        color: black;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: $gridHeaderBGColor;
+    }
+    .ui-treetable .ui-treetable-tbody>tr:nth-child(even) {
+        background-color: $gridCellColor;
+    }
+    .ui-table .ui-table-thead>tr>th {
+        font-size: $gridHeaderFontFamily;
+        font-family: $gridHeaderFontFamily;
+        text-align: left;
+        padding-left: 25px !important;
+        border-bottom: 0px !important;
+        color: black;
+        background-color: $gridHeaderBGColor;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .ui-treetable .ui-treetable-toggler {
+        cursor: pointer;
+        display: inline-block;
+        height: 1em;
+        position: relative;
+        top: 0%;
+        margin-top: -.5em;
+    }
+    .ui-treetable .ui-sortable-column.ui-state-highlight .ui-sortable-column-icon {
+        color: #000000;
+    }
+    th:focus {
+        outline: 0 !important;
+    }
+    th,
+    td {
+        @extend .textWrapper;
+    } // to show the header separator only for more than medium screens
+    @media (min-width: 992px) {
+        th {
+            position: relative;
+            padding-left: 10px;
+            &:not(:last-child):after {
+                content: ' ';
+                height: 16px;
+                position: absolute;
+                top: 13px;
+                width: 0.05em;
+                background-color: #788791;
+                right: 0px;
+            }
+        }
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.borderline {
+    border-bottom: 1px solid #c0c0c0;
+    height: 2px;
+    width: 100%;
+    margin: 1.5em;
+}
+
+.gridView {
+    .ui-table .ui-table-tbody>tr>td {
+        padding-top: 13px;
+        padding-bottom: 13px;
+        font-family: $gridContentFontFamily;
+        font-size: $gridContentFontSize;
+        overflow-wrap: break-word;
+        border: 0;
+    }
+    .ui-table .ui-table-tbody>tr:nth-child(even) {
+        background-color: $gridCellColor;
+    }
+    .ui-table .ui-table-thead>tr>th {
+        font-size: $gridHeaderFontSize;
+        font-family: $gridHeaderFontFamily;
+        text-align: left;
+        border-bottom: 0px !important;
+        color: black;
+        background-color: $gridHeaderBGColor;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        border: 0;
+    }
+    .ui-table .ui-sortable-column.ui-state-highlight .ui-sortable-column-icon {
+        color: #000000;
+    }
+    th:focus {
+        outline: 0 !important;
+    }
+    @media (min-width: 992px) {
+        th {
+            position: relative;
+            padding-left: 10px;
+            &:not(:last-child):after {
+                content: ' ';
+                height: 16px;
+                position: absolute;
+                top: 13px;
+                width: 0.05em;
+                background-color: #788791;
+                right: 0px;
+                margin-right: 2px;
+            }
+        }
+    }
+    th,
+    td {
+        @extend .textWrapper;
+    }
+}
+
+.error {
+    color: #dc3545;
+    font-style: italic;
+    font-size: 11px;
+    font-family: "SiemensSans-Roman";
+}
+
+.staticFields {
+    height: 50px;
+}
+
+.shieldStatus {
+    max-width: 45%;
+    border-radius: 10px;
+    color: $bgWhite;
+    text-align: center;
+}
+
+.statusGood {
+    @extend .shieldStatus;
+    background-color: $bgStatusGood;
+}
+
+.statusBad {
+    @extend .shieldStatus;
+    background-color: $bgStatusBad;
+}
+
+.statusNone {
+    @extend .shieldStatus;
+    background-color: $bgWhite;
+}
+
+input.form-control {
+    border-radius: 4px;
+    height: 40px;
+    font-family: "SiemensSans-Roman";
+}
+
+.arsenic {
+    color: #ec3041;
+    padding: 5px;
+}
+
+body .ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+}
+
+.siemens-label-text {
+    font-family: "SiemensSans-Roman"!important;
+    font-size: 12px!important;;
+}
+
+.siemens-label-bold-text {
+    font-family: "SiemensSans-Bold"!important;;
+    font-size: 12px!important;;
+}
+
+.ui-dropdown label.ui-dropdown-label {
+    font-family: "SiemensSans-Roman";
+    font-size: 12px;
+}
+
+// pop up overlay styles
+.ui-widget-overlay {
+    &.ui-sidebar-mask {
+        top: 2.5em;
+    }
+    background-color: rgba(48, 48, 48, 0.7) !important;
+    top: 45px !important;
+    opacity:0.7 !important;
+}
+
+.overflow-visible {
+    overflow: visible !important;
+    font-size: 12px;
+}
+
+.saveConfigBtn {
+    width: 145px;
+    height: 48px;
+    border-radius: 4px;
+    background-color: #79bfd3 !important;
+    font-family: SiemensSans-Roman;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.configurationBtn {
+    width: 100px;
+    height: 48px;
+    border-radius: 4px;
+    background-image: linear-gradient(to bottom, #f4f7f8, #eaeef0) !important;
+}
+
+.cancelImg {
+    width: 21.2px;
+    height: 21.2px;
+}
+
+.configBtnMargin {
+    margin-left: -1.3%;
+}
+
+.primaryBtn {
+    background-color: #79bfd3 !important;
+    color: white !important;
+}
+
+.ui-overlaypanel-content {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+// p-overlaypannel arrow
+.ui-overlaypanel:before {
+    content: ' ';
+    left: 92% !important;
+    border-color: transparent transparent darkgray transparent !important;
+}
+
+.ui-overlaypanel::after {
+    content: ' ';
+    left: 92% !important;
+    border-color: transparent transparent white transparent !important;
+}
+
+.ui-overlaypanel.ui-widget.ui-widget-content {
+    border: 1px solid darkgrey !important;
+    ;
+}
+
+.ui-overlaypanel.ui-widget.ui-widget-content {
+    left: 70% !important;
+    right: 1% !important;
+}
+
+#languageDD .buttonDisplay {
+    width: 100% !important;
+}
+
+#detailedViewBtn .buttonDisplay {
+    width: 60% !important;
+}
+
+#languageDD .dropdownMenuDisplay {
+    width: 100% !important;
+}
+
+#languageDD li:hover {
+    width: 100% !important;
+}
+
+#languageDD li[_ngcontent-c4]:not(:first-child):after {
+    width: 87%;
+}
+
+// removing header from the confirmation pop up
+.ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top {
+    display: none !important;
+}
+
+.errorOnLoad {
+    color: #f4c242;
+    font-size: 18px !important;
+}
+
+.errorOutline {
+    border-color: #dc3545 !important;
+}
+.ui-datepicker.ui-widget{
+    z-index: 99999 !important;
+}
+.errorOnLoad {
+    color: #f4c242;
+    font-size: 18px !important;
+}

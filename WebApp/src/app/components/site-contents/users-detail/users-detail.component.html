@@ -1,0 +1,104 @@
+<div class="container">
+    <div *ngIf="loginData.accessRole === 'admin'">
+        <!--show only edit on load -->
+        <div *ngIf="editUserData === false;else DisplayEditButtons" class="row justify-content-center pt-5 pb-3">
+            <button (click)="editUserDetails()" class="btn primaryBtn pr-4 pl-4"><i class="fa fa-pencil pr-2"></i>Edit</button>
+        </div>
+        <!--show the rest of the buttons on click of edit-->
+        <ng-template #DisplayEditButtons>
+            <div *ngIf="editUserData === true" class="row justify-content-center pt-5 pb-3">
+                <button class="btn mr-2 mt-2 primaryBtn" (click)="openAddUserPopup()">
+                    <img src="../../../../assets/images/Adduser.png"> Add User</button>
+                <button class="btn mr-2 mt-2 primaryBtn" (click)="deleteUsers()"><i class="fa fa-trash-o pr-2 font-size20px"></i>Delete
+                    Users</button>
+                <button class="btn mr-2 mt-2 primaryBtn" (click)="updateUserDetails(userService.users)">
+                    <img src="../../../../assets/images/Save.png">Save Changes</button>
+                <button (click)="cancelEditChanges()" class="btn mt-2"><img src="../../../../assets/images/Cancel.png"
+                        alt="">Cancel</button>
+            </div>
+        </ng-template>
+    </div>
+    <div class="pt-5">
+        <div class="staticFieldsUserDetail">
+            <div *ngIf="zeroUsersSelectedErr=== true" class="error">Please Select a
+                user to delete</div>
+            <div *ngIf="noDataToSaveErr === true" class="error">** There are no changes to save</div>
+        </div>
+        <p-table id="usersGrid" class="gridView mt-5" [columns]="cols" [value]="userService?.users"
+            [style]="{width:'100%'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngIf="loginData.accessRole === 'admin'&& editUserData === true" style="width:
+                        3em">
+                        <p class="m-auto d-flex">
+                            <input type="checkbox" id="userItems" name="userItems" (change)="onAllSelectDeselect()"
+                                [checked]="userService?.users.checked"></p>
+                    </th>
+                    <th>UserId</th>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Phone Number</th>
+                    <th>Access Role</th>
+                    <th>Scope</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td *ngIf="loginData?.accessRole === 'admin' && editUserData === true" style="width:
+                        3em">
+                        <!-- <p-tableCheckbox [disabled]="(loginData?.userId ===
+                            user.userId.toLowerCase())" [value]="user"></p-tableCheckbox> -->
+                        <p class="m-auto d-flex">
+                            <input [disabled]="(loginData?.userId ===
+                            user.userId.toLowerCase())"
+                                type="checkbox" id="{{user.userId}}" name="userItem" (change)="onSelectDeselect(user)"
+                                [checked]="user.checked">
+                        </p>
+                    </td>
+                    <td data-toggle="tooltip" title="{{user.userId}}">{{user.userId}}</td>
+                    <td data-toggle="tooltip" title="{{user.userName}}">{{user.userName}}</td>
+                    <td>
+                        <div data-toggle="tooltip" title="Not Available" *ngIf="user.emailId=== '';else emailId"> -NA-
+                        </div>
+                        <ng-template #emailId>
+                            <div data-toggle="tooltip" title="{{user.emailId}}">{{user.emailId}}</div>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <div data-toggle="tooltip" title="Not Available" *ngIf="user.phoneNumber=== '';else PhoneNumber">
+                            -NA-</div>
+                        <ng-template #PhoneNumber>
+                            <div data-toggle="tooltip" title="{{user.phoneNumber}}">
+                                {{user.phoneNumber}}</div>
+                        </ng-template>
+                    </td>
+                    <td class="overflow-visible">
+                        <span data-toggle="tooltip" title="{{user.role}}" *ngIf="editUserData === false">{{user.role}}</span>
+                        <span *ngIf="(editUserData === true &&
+                            loginData?.userId !== user.userId.toLowerCase())">
+                            <p-dropdown id="usersGrid" [(ngModel)]="user.role" (onChange)="scopeOnRoleChange($event,user)"
+                                [style]="{'width':'100%'}" [options]="rolesList"></p-dropdown>
+                        </span>
+                        <!--not allow to edit self role-->
+                        <span *ngIf="(editUserData === true &&
+                                    loginData?.userId === user.userId.toLowerCase())"
+                            data-toggle="tooltip" title="Cannot edit self role">
+                            <i class="fa fa-info-circle"></i>
+                            <span>{{user.role}}</span>
+                        </span>
+                    </td>
+                    <td data-toggle="tooltip" title="{{user.scope}}">{{user.scope}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td class="text-center" colspan="cols.length">No Records Found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<app-modal-popup [isComponentLoad]="true" [isDefaultBtnVisible]="false" #userModal></app-modal-popup>
+
+<app-confirmation-dialog key="DeleteUserConfirmation" message="Are you sure you want to delete selected user/s?" icon="pi pi-info-circle"
+    #confirmDelete></app-confirmation-dialog>

@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 opcuaCenterDiv">
+      <div class="row " *ngFor="let item of opcUaServerInfo">
+        <div class="col-sm-3 siemens-label-bold-text textSize">{{item.title}} : </div>
+        <div class="col-sm-6 siemens-label-text textSize">{{item.value}}</div>
+      </div>
+    </div>
+  </div>
+</div>

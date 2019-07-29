@@ -1,0 +1,66 @@
+<div *ngIf="showLoader" class="detailSpinnerBackground">
+  <div class="detailSpinnerContainer">
+    <img class="spinnerImg" src="../assets/gifs/spinner-grey.gif">
+  </div>
+</div>
+<div class="universalCommandSection">
+  <div class="saveSelectSection">
+    <div class="row mb-3">
+      <div class="col-8 d-flex text-right">
+        <div class="offset-4 col-4"><label class="siemens-label-text">Universal Command</label></div>
+        <div class="col-4">
+          <app-dropdown id="languageDD" name="language" (SelectDropdownEvent)="onCommandSelect($event)" [option]="universalCommands.commandList"
+            [selectedValue]="universalCommands.selectedCommand"></app-dropdown>
+          <div *ngIf="noCommandSelectedErr === true" class="error text-left pt-1">Please selected command</div>
+        </div>
+      </div>
+      <div class="col-4">
+        <button (click)="sendCommand(selectedCommandItem)" class="btn primaryBtn"><img src="../../../../assets/images/Send.png"
+            class="mr-2 w-15x"><span>Send</span></button>
+      </div>
+    </div>
+    <div *ngIf="hasCommandFailed === true" class="text-center error">Command failed to execute,Please send the command again.</div>
+  </div>
+  <!---display input parameters if required-->
+  <div *ngIf="selectedCommandItem?.inputParameterDetails.length > 0">
+    <div class="row p-2 justify-content-center" *ngFor="let item of selectedCommandItem?.inputParameterDetails">
+      <div class="col-3 margin-auto text-right">{{item.label}}:</div>
+      <div class="col-5" *ngIf="item.dataEncode === null && item.type !=='Date'"><input (ngModelChange)="onInputFieldChange(item,$event)"
+          class="form-control" type="text" [(ngModel)]="item.parameterValue">
+        <div class="error">{{item.error}}</div>
+      </div>
+      <div *ngIf="item.dataEncode !== null" class="col-5">
+        <app-dropdown id="languageDD" name="language" (SelectDropdownEvent)="onValueSelectForWrite($event,item)"
+          [option]="item.dataEncode" [selectedValue]="item.decodeValue"></app-dropdown>
+        <div class="error">{{item.error}}</div>
+      </div>
+      <div *ngIf="item.type ==='Date'" class="col-5">
+        <p-calendar (onSelect)="onDateSelect(selectedDate,item)" [(ngModel)]="item.parameterValue" dateFormat="yy-mm-dd"></p-calendar>
+        <div class="error">{{item.error}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedCommandItem?.data?.length > 0">
+    <p-table class="gridView" [value]="selectedCommandItem?.data">
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let col of cols">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData>
+        <tr>
+          <td *ngFor="let col of cols">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td class="text-center" colspan="2">No Records Found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

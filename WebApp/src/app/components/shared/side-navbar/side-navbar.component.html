@@ -1,0 +1,8 @@
+<p-sidebar [dismissible]="true" [(visible)]="visibility" position="right"
+  [baseZIndex]="10000" [showCloseIcon]="false">
+  <div *ngIf="visibility === true">
+    <app-detail-view (closeDetailView)=closeDetailViewConditionally($event) [params]="params"></app-detail-view>
+  </div>
+</p-sidebar>
+<app-confirmation-dialog header="Warning" message="Are you sure you want to discard the changes?" icon="pi pi-info-circle"
+  #confirmOnDiscardChanges></app-confirmation-dialog>

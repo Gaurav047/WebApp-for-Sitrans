@@ -1,0 +1,66 @@
+<div id="systemSettings" class="container">
+  <div *ngIf="settingService.isAdmin === true">
+    <form name="settingsForm" #f="ngForm" novalidate>
+      <div class="row pb-5">
+        <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+          <button type="submit" class="saveConfigBtn btn mr-3" (click)="saveChanges()">
+            <img class="pl-1 pr-1" src="../../../../assets/images/Save.png" alt="">Save Changes</button>
+
+          <button type="submit" class="btn" (click)="cancelChanges()"><img src="../../../../assets/images/Cancel.png"
+              alt="">
+            Cancel</button>
+        </div>
+      </div>
+      <h6>Web Application Settings</h6>
+      <div class="row form-group" *ngFor="let item of settingService.systemSettingModel; let i = index">
+        <div class="col-4"> <label>{{item.displayName}} :</label></div>
+        <div class="col-4"><input (ngModelChange)="onInputFieldChange(item,$event)" name="settingItems-{{i}}"
+            [(ngModel)]="item.parameterValue" type="text" class="form-control pb-2" #settingItems="ngModel">
+          <div class="error" *ngIf="item.error !== undefined">{{item.error}}</div>
+        </div>
+        <div class="col-2 align-self-center pl-0">Seconds</div>
+      </div>
+      <h6>Device Settings</h6>
+      <div class="row form-group">
+        <div class="col-4"> <label>{{settingService.deviceSettingsModel['scanFrequency'].displayName}} :</label></div>
+        <div class="col-4"><input
+            [(ngModel)]="settingService.deviceSettingsModel['scanFrequency'].parameterValue" type="text" class="form-control pb-2" [ngModelOptions]="{standalone: true}"  (ngModelChange)="onScanFrequencyChange()">
+          <div class="error" *ngIf="settingService.deviceSettingsModel['scanFrequency'].error !== undefined">{{settingService.deviceSettingsModel['scanFrequency'].error}}</div>
+        </div>
+        <div class="col-2 align-self-center pl-0">Seconds</div>
+      </div>
+    </form>
+    <h6>RS485 Frequency</h6>
+    <div class="row" *ngFor="let obj of modbusSettings">
+      <div class="col-sm-4">
+        {{obj.name}}:
+      </div>
+      <div class="col-sm-4">
+        <span>
+          <p-dropdown [options]="obj.value" [(ngModel)]="obj.updateValue" optionLabel="name" editable="true"></p-dropdown>
+        </span>
+        <span class="pl-2">{{obj.unit !== undefined ?obj.unit: null}}</span>
+
+      </div>
+    </div>
+    <app-confirmation-dialog message="Are you sure you
+    want to save the data?" icon="pi pi-info-circle"
+      #confirmSaveSettings></app-confirmation-dialog>
+  </div>
+  <div *ngIf="settingService.isAdmin === false">
+    <h6>Interval Frequency</h6>
+    <div class="row" *ngFor="let item of settingService.systemSettingModel">
+      <div class="col-4"> <label>{{item.displayName}} :</label></div>
+      <div class="col-4">{{item.parameterValue}} Seconds</div>
+    </div>
+    <h6>RS485 Frequency</h6>
+    <div class="row" *ngFor="let obj of modbusSettings">
+      <div class="col-sm-4">
+        {{obj.name}}:
+      </div>
+      <div class="col-sm-4">
+        {{obj.updateValue.name}}
+      </div>
+    </div>
+  </div>
+</div>

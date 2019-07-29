@@ -1,0 +1,63 @@
+
+// Node list for deviceType=11 deviceRevision=3 manufacturerId=42
+[
+  {
+    "nodeId": "i_1010",
+    "parameter": "configuration_changed_counter"
+  },
+  {
+    "nodeId": "i_1011",
+    "parameter": "extended_field_device_status"
+  },
+  {
+    "nodeId": "i_1023",
+    "parameter": "pressure_upper_range_value"
+  },
+  {
+    "nodeId": "i_1023",
+    "parameter": "pressure_lower_range_value"
+  },
+  {
+    "nodeId": "i_1024",
+    "parameter": "pressure_damping_value"
+  },
+  {
+    "nodeId": "i_1044",
+    "parameter": "sensor_temp_damping_val"
+  },
+  {
+    "nodeId": "i_1064",
+    "parameter": "el_temp_damping_val"
+  },
+  {
+    "nodeId": "i_1084",
+    "parameter": "level_damping_val"
+  },
+  {
+    "nodeId": "i_1012",
+    "parameter": "longTag"
+  },
+  {
+    "nodeId": "i_1013",
+    "parameter": "fabrication_number"
+  },
+  {
+    "nodeId": "i_1014",
+    "parameter": "manufacturer_id"
+  },
+  {
+    "nodeId": "i_1015",
+    "parameter": "software_revision"
+  },
+  {
+    "nodeId": "i_1016",
+    "parameter": "hardware_revision"
+  }
+]
+
+// Parameters undefined in respective parameters:
+parameter: el_temp_damping_val,HARTCommand: 15,TransactionNumber: 0,NodeId: i_1064 // other command list -- 15,54,55,34
+parameter: level_damping_val,HARTCommand: 15,TransactionNumber: 0,NodeId: i_1084 //other command list -- 15,54,55,34
+parameter: sensor_temp_damping_val,HARTCommand: 15,TransactionNumber: 0,NodeId: i_1044 //other command list -- 15,54,55,34
+
+
