@@ -8,6 +8,8 @@ import { AddUserComponent } from '@app/components/site-contents/add-user/add-use
 import { LoaderService } from '@app/services/shared/loader.service';
 import { getModifiedData } from '@app/utility/modifiedArrayData';
 import { ToastMessageService } from '@app/services/shared/toast-message.service';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-users-detail',
   templateUrl: './users-detail.component.html',
@@ -24,15 +26,18 @@ export class UsersDetailComponent implements OnInit {
   shieldChannelData: any;
   editUserData: boolean;
   noDataToSaveErr: boolean;
+  mockdata:any;
   @ViewChild('userModal') public addUserModalRef: ModalPopupComponent;
   @ViewChild('confirmDelete') public confirmDeleteRef: ConfirmationDialogComponent;
 
   constructor(public userService: UserService,
     private auth: AuthService,
     private loaderService: LoaderService,
-    private toastMessageService: ToastMessageService) {
+    private toastMessageService: ToastMessageService,private http: HttpClient ) {
   }
   ngOnInit() {
+    this.mockdata = [{id:1,filename:'xx.json',lastModified:'123'},
+    {id:2,filename:'yyy.json',lastModified:'123'}];
     this.cols = [
       { header: 'Name' },
       { header: 'Email Id' },
@@ -50,6 +55,14 @@ export class UsersDetailComponent implements OnInit {
     { label: 'Operator', value: 'Operator' },
     { label: 'Reporter', value: 'Reporter' }];
     this.editUserData = false;
+
+      return this.http.get<any>(`http://yourIp:portnumber/user/usersdetail`)
+        .pipe(map((res: any) => {
+       
+          return res // returning result to find the dirty bit;
+        })).subscribe(res=>{
+this.mockdata = res;
+        });
   }
   // to compose email on click of mail icon
   composeEmail(emailId: string) {
