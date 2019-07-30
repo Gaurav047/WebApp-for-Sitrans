@@ -36,14 +36,12 @@ export class UsersDetailComponent implements OnInit {
     private toastMessageService: ToastMessageService,private http: HttpClient ) {
   }
   ngOnInit() {
-    this.mockdata = [{id:1,filename:'xx.json',lastModified:'123'},
-    {id:2,filename:'yyy.json',lastModified:'123'}];
+   
     this.cols = [
-      { header: 'Name' },
-      { header: 'Email Id' },
+      { header: 'serial No',field :'id'},
+      { header: 'File Name' },
       { header: 'Phone Number' },
-      { header: 'Access Role' },
-      { header: 'Scope' }
+      
     ];
     // method to load the users grid
     this.loadUserDetailsGrid();

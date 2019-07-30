@@ -17,6 +17,12 @@ const router = require('./routes/load.js')
 // Middleware to parse and upload files to diskstorage
 const multer = require('multer')
 
+const path = require('path')
+
+const fs = require('fs')
+const directoryPath = path.join(__dirname,'uploads');
+var list = [];
+
 //..............................................................//
 
 // Using different packages
@@ -45,6 +51,22 @@ app.get("/", (req, res) => {
 });
 
 //.................................................................//
+
+fs.readdir(directoryPath, function(err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    //listing all files using forEach
+    console.log(files.length);
+    list.push(files);
+    console.log(list);
+    files.forEach(function (file) {
+        //DO whatever is needed to be done with the file
+        console.log(file);
+    })
+})
+
 
 // localhost:3003
 app.listen(3003, () => {

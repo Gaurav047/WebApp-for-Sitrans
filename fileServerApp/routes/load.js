@@ -3,9 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const multer = require('multer')
 const path = require('path')
-const passport = require('passport')
-const url = require('url')
-const querystring = require('querystring')
+// const passport = require('passport')
+// const url = require('url')
+// const querystring = require('querystring')
 
 const router = express.Router()
 
@@ -105,11 +105,11 @@ router.get('/api/v1/fileserver',(req, res) => {
     res.download(fileLocation, file, function (err) {
         if (err) {
             console.log("Error 404. File Not Found");
-            return res.sendStatus(404).json(err);
+            res.sendStatus(404).json(err);
         }
         else if (!flag){
             console.log("Enter a Valid Value.");
-            return res.sendStatus(404).json(err);
+            res.sendStatus(404).json(err);
             //error code and description in json
             // invalid input for flag = true
         }
@@ -119,6 +119,9 @@ router.get('/api/v1/fileserver',(req, res) => {
     });
     flag = false;
 });
+
+//.............................................................
+// REST Endpoint for a list of files in the uploads folder
 
 
 module.exports = router
