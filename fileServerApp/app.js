@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
 });
 
 //.................................................................//
+//A GET endpoint for the list of filenames in uploads folder
 
 fs.readdir(directoryPath, function(err, files) {
     //handling error
@@ -58,7 +59,7 @@ fs.readdir(directoryPath, function(err, files) {
         return console.log('Unable to scan directory: ' + err);
     }
     //listing all files using forEach
-    console.log(files.length);
+    //console.log(files.length);
     list.push(files);
     console.log(list);
     files.forEach(function (file) {
@@ -67,6 +68,11 @@ fs.readdir(directoryPath, function(err, files) {
     })
 })
 
+app.get('/lists', (req, res) => {
+    console.log("Trying to fetch the name of files in uploads directory.");
+    res.send(list);
+});
+//......................................................................
 
 // localhost:3003
 app.listen(3003, () => {

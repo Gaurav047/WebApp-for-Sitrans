@@ -106,12 +106,14 @@ router.get('/api/v1/fileserver',(req, res) => {
         if (err) {
             console.log("Error 404. File Not Found");
             res.sendStatus(404).json(err);
+            res.redirect('/');
         }
         else if (!flag){
             console.log("Enter a Valid Value.");
             res.sendStatus(404).json(err);
             //error code and description in json
             // invalid input for flag = true
+            res.redirect('/');
         }
         else {
             console.log("File Downloaded");
