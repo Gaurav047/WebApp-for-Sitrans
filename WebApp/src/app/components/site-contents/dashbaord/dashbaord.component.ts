@@ -13,23 +13,19 @@ export class DashbaordComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.mockdata = [{manufacturerId:34,deviceType:43,deviceRevision:1,protocol:'HART',fileType:'json'},
-    {manufacturerId:36,deviceType:45,deviceRevision:3,protocol:'MODBUS',fileType:'xml'}];
+    // this.mockdata = [{SerialNo:1,FileName:'32_43_1_HART.json'},
+    // {SerialNo:2,FileName:'23_42_1_MODBUS.json'}];
 
-    this.cols =[{header: 'Manufacturer ID',field: 'manufacturerId'},
-    {header: 'Device Type',field: 'deviceType'},
-    {header: 'Device Revision',field: 'deviceRevision'},
-    {header: 'Protocol',field: 'protocol'},
-    {header: 'File Type',field: 'fileType'}
-
+    this.cols =[{header: 'Serial Number'},
+    {header: 'File Name'}
   ]
-// this.getdata();
+ this.getdata();
 
   }
   // to override the mock data 
 getdata(){
 
-  return this.http.get<any>(`http://yourIp:portnumber/user/usersdetail`)
+  return this.http.get<any>(`http://localhost:3003/lists`)
   .pipe(map((res: any) => {
  
     return res // returning result to find the dirty bit;

@@ -20,9 +20,21 @@ const multer = require('multer')
 const path = require('path')
 
 const fs = require('fs')
+
+// enable CORS
+var allowCrossDomain = function (req, res, next) {
+    // has to be changed to specific port -- AB
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Accept');
+    if (req.method === "OPTIONS")
+        res.sendStatus(200);
+    else
+        next();
+}
+app.use(allowCrossDomain);
 const directoryPath = path.join(__dirname,'uploads');
 var list = [];
-
 //..............................................................//
 
 // Using different packages
@@ -60,16 +72,17 @@ fs.readdir(directoryPath, function(err, files) {
     }
     //listing all files using forEach
     //console.log(files.length);
-    list.push(files);
-    console.log(list);
+    var i =1;
     files.forEach(function (file) {
         //DO whatever is needed to be done with the file
-        console.log(file);
+        list.push({ serialNo: i, fileName: file })
+        i=i+1;
     })
+    console.log(list);
 })
 
 app.get('/lists', (req, res) => {
-    console.log("Trying to fetch the name of files in uploads directory.");
+    console.log("Fetching the name of files in uploads directory.");
     res.send(list);
 });
 //......................................................................

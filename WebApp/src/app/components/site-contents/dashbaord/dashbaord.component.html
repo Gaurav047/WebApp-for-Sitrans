@@ -48,10 +48,13 @@
           </th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-data>
+  <ng-template pTemplate="body" let-data >
       <tr>
-          <td *ngFor="let col of cols">
-                  {{data[col.field]}}
+          <td >
+                 {{data.serialNo}}
+          </td>
+          <td>
+            {{data.fileName}}
           </td>
       </tr>
   </ng-template>
