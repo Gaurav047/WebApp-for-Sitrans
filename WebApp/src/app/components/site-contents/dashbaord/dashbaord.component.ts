@@ -13,11 +13,14 @@ export class DashbaordComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    // this.mockdata = [{SerialNo:1,FileName:'32_43_1_HART.json'},
-    // {SerialNo:2,FileName:'23_42_1_MODBUS.json'}];
 
     this.cols =[{header: 'Serial Number'},
-    {header: 'File Name'}
+    {header: 'Manufacturer ID'},
+    {header: 'Device type'},
+    {header: 'Device Revision'},
+    {header: 'Protocol'},
+    {header: 'File Type'}
+
   ]
  this.getdata();
 
@@ -34,3 +37,9 @@ this.mockdata = res;
   });
 }
 }
+
+
+// ............
+
+  
+

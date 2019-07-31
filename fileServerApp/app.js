@@ -34,7 +34,14 @@ var allowCrossDomain = function (req, res, next) {
 }
 app.use(allowCrossDomain);
 const directoryPath = path.join(__dirname,'uploads');
+
+//..............................................................//
+//Some Useful Variables for the /lists endpoint 
 var list = [];
+var list_parsed = [];
+var list_parsed2 = [];
+var list_parsed3 = [];
+
 //..............................................................//
 
 // Using different packages
@@ -43,7 +50,7 @@ app.use(router)
 
 // Serving a static file
 app.use(express.static('./public'))
-
+//onFileChang
 app.use(bodyParser.urlencoded({extended: false}))
 
 //..............................................................//
@@ -75,7 +82,16 @@ fs.readdir(directoryPath, function(err, files) {
     var i =1;
     files.forEach(function (file) {
         //DO whatever is needed to be done with the file
-        list.push({ serialNo: i, fileName: file })
+        //Parsing the FileName
+        count = 0;
+        list_parsed = file.split("_");
+        ///console.log(list_parsed);
+        list_parsed2 = file.split(".");
+        list_parsed3 = list_parsed[3].split('.');
+        //console.log(list_parsed3);
+        //console.log(list_parsed2)
+        list.push({serialNo: i, manufacturerId: list_parsed[0], deviceType: list_parsed[1], deviceRevision: list_parsed[2], protocol: list_parsed3[0], fileType: list_parsed2[1]});
+        //console.log(list)
         i=i+1;
     })
     console.log(list);
