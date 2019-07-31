@@ -97,7 +97,7 @@ fs.readdir(directoryPath, function(err, files) {
     console.log(list);
 })
 
-app.get('/lists', (req, res) => {
+app.get('/api/v1/fileserver/lists', (req, res) => {
     console.log("Fetching the name of files in uploads directory.");
     res.send(list);
 });

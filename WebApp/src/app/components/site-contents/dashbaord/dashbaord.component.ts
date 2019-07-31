@@ -28,7 +28,7 @@ export class DashbaordComponent implements OnInit {
   // to override the mock data 
 getdata(){
 
-  return this.http.get<any>(`http://localhost:3003/lists`)
+  return this.http.get<any>(`http://localhost:3003/api/v1/fileserver/lists`)
   .pipe(map((res: any) => {
  
     return res // returning result to find the dirty bit;
