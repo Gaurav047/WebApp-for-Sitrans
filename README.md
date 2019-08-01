@@ -23,4 +23,4 @@ It basically provides REST endpoints for Uploading, Downloading and showing the 
 2. POST https://<IP-ADDRESS>:PORT/api/v1/fileserver
     BodyFileUpload = 32_43_1_HART.json
     Response : 201 Created
-3. GET https://<IP-ADDRESS:PORT/lists
+3. GET https://<IP-ADDRESS:PORT/api/v1/fileserver/lists
