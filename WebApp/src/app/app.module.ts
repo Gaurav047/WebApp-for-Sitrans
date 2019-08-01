@@ -21,7 +21,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AppComponent } from '@app/app.component';
 import { HeaderComponent } from '@app/components/header-content/header/header.component';
 import { NavigationbarComponent } from './components/header-content/navigationbar/navigationbar.component';
-import { DashbaordComponent } from './components/site-contents/dashbaord/dashbaord.component';
+import { DashboardComponent } from './components/site-contents/dashboard/dashboard.component';
 import { ModalPopupComponent } from './components/shared/modal-popup/modal-popup.component';
 import { DisplayControlErrorComponent } from './components/shared/display-control-error/display-control-error.component';
 import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
@@ -76,7 +76,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
     AppComponent,
     HeaderComponent,
     NavigationbarComponent,
-    DashbaordComponent,
+    DashboardComponent,
     ModalPopupComponent,
     DisplayControlErrorComponent,
     ConfirmationDialogComponent,

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashbaordComponent } from '@app/components/site-contents/dashbaord/dashbaord.component';
+import { DashboardComponent } from '@app/components/site-contents/dashboard/dashboard.component';
 import { ConfigNavbarComponent } from '@app/components/shared/config-navbar/config-navbar.component';
 import { DataLoggerConfigurationComponent } from '@app/components/site-contents/data-logger-configuration/data-logger-configuration.component';
 import { MindConnectComponent } from './components/site-contents/mind-connect/mind-connect.component';
@@ -16,10 +16,10 @@ import { SystemSettingsComponent } from './components/site-contents/system-setti
 import { DataViewerComponent } from './components/site-contents/data-viewer/data-viewer.component';
 
 const routes: Routes = [
-  // by default redirect the user to dashboard screen, in dashbaord screen there in authguard which will authenticate the users token is valid or not
+  // by default redirect the user to dashboard screen, in dashboard screen there in authguard which will authenticate the users token is valid or not
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashbaordComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'usersDetail', component: UsersDetailComponent, canActivate: [AuthGuard] },
   {
     path: 'config', component: ConfigNavbarComponent, canActivate: [AuthGuard],

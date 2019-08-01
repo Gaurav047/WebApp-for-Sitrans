@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { AuthGuard } from '@app/services/shared/auth.guard';
 
 @Component({
-  selector: 'app-dashbaord',
-  templateUrl: './dashbaord.component.html',
-  styleUrls: ['./dashbaord.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+
 })
-export class DashbaordComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   mockdata:any;
   cols:any;
+  uploadedFiles: any[] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -36,8 +39,18 @@ getdata(){
 this.mockdata = res;
   });
 }
+onBasicUpload(event:any) {
+  console.log('inside')
+  console.log('event',event);
+  for(let file of event.files) {
+      this.uploadedFiles.push(file);
+      console.log(this.uploadedFiles);
+  }
 }
-
+oploadFile(e){
+  console.log('event',e);
+}
+}
 
 // ............
 
