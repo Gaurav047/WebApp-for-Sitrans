@@ -1,7 +1,7 @@
 <div class="container mt-3">
   
 <p-fileUpload name="demo[]" url="./upload" (onUpload)="onUpload($event)"
-       multiple="multiple" accept="image/*" maxFileSize="1000000">
+       multiple="multiple">
    <ng-template pTemplate="content">
        <ul *ngIf="uploadedFiles.length">
            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
@@ -9,14 +9,65 @@
    </ng-template>
 </p-fileUpload>
 
-<p-table class="gridView" [value]="mockdata">
+
+
+ <!-- <p-table #dt class="gridView" [value]="mockdata">
+              <ng-template pTemplate="caption">
+                     <div style="text-align: right">        
+                         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                         <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                     </div>
+              </ng-template>
   <ng-template pTemplate="header">
       <tr>
           <th *ngFor="let col of cols">
               {{col.header}}
+              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
           </th>
       </tr>
   </ng-template>
+  <ng-template pTemplate="body" let-data >
+      <tr>
+          <td >
+                 {{data.serialNo}}
+          </td>
+          <td>
+                 {{data.manufacturerId}}
+          </td>
+          <td>
+                 {{data.deviceType}}
+          </td>
+          <td>
+                 {{data.deviceRevision}}
+          </td>
+          <td>
+                 {{data.protocol}}
+          </td>
+          <td>
+                 {{data.fileType}}
+          </td>
+      </tr>
+  </ng-template>
+</p-table> -->
+
+
+  <p-table  #dt class="gridView" [columns]="cols" [value]="mockdata">
+             <!--   Search Filter-->
+              <ng-template pTemplate="caption">
+                     <div style="text-align: right">        
+                         <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                         <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                     </div>
+              </ng-template>
+              <!-- Search Filter Done-->
+       <ng-template pTemplate="header" let-columns>
+           <tr>
+               <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+                   {{col.header}}
+                   <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+               </th>
+           </tr>
+       </ng-template>
   <ng-template pTemplate="body" let-data >
       <tr>
           <td >

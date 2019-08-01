@@ -17,12 +17,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cols =[{header: 'Serial Number'},
-    {header: 'Manufacturer ID'},
-    {header: 'Device type'},
-    {header: 'Device Revision'},
-    {header: 'Protocol'},
-    {header: 'File Type'}
+    this.cols =[{header: 'Serial Number', field:'SerialNo'},
+    {header: 'Manufacturer ID', field:'manufacturerId'},
+    {header: 'Device type', field:'deviceType'},
+    {header: 'Device Revision', field:'deviceRevision'},
+    {header: 'Protocol', field:'protocol'},
+    {header: 'File Type', field:'fileType'}
 
   ]
  this.getdata();
@@ -36,10 +36,10 @@ getdata(){
  
     return res // returning result to find the dirty bit;
   })).subscribe(res=>{
-this.mockdata = res;
+  this.mockdata = res;
   });
 }
-onBasicUpload(event:any) {
+onUpload(event:any) {
   console.log('inside')
   console.log('event',event);
   for(let file of event.files) {
@@ -47,12 +47,7 @@ onBasicUpload(event:any) {
       console.log(this.uploadedFiles);
   }
 }
-oploadFile(e){
-  console.log('event',e);
 }
-}
-
-// ............
 
   
 
