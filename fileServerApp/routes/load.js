@@ -114,7 +114,7 @@ router.get('/api/v1/fileserver',(req, res) => {
         //     // invalid input for flag = true
         //    // res.redirect('/');
         // }
-            res.status(200).sendFile(fileLocation);
+            res.status(200).sendFile(file,{root:__dirname});
     });
     //flag = false;
 });

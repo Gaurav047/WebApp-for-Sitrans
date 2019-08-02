@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
     console.log(protocolType)
     return this.http.get(`http://localhost:3003/load/api/v1/fileserver?manufacturerId=${manufacturerId}&deviceType=${deviceType}&deviceRevision=${deviceRevision}&protocolType=${protocolType}&fileType=${fileType}` ,{responseType: "blob",headers: new HttpHeaders().append("Content-Type", "application/json")}).subscribe(res=>{
       console.log('res',res)
-      saveAs(res, '123.txt');
+      saveAs(res,`${manufacturerId}_${deviceType}_${deviceRevision}_${protocolType}.${fileType}`);
     });
   }
 }
