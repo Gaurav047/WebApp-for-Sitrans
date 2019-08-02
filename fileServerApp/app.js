@@ -4,13 +4,11 @@
 const express = require('express');
 const app = express(); //Object app of class express.
 
-//const mysql = require('mysql');
-
 // We are using morgan to get complete log of GET/POST or any other request
 const morgan = require('morgan');
 
 const bodyParser = require('body-parser')
-
+app.use(bodyParser.urlencoded({extended: false}))
 // Refactor code into different files
 const router = require('./routes/load.js')
 
@@ -33,7 +31,7 @@ var allowCrossDomain = function (req, res, next) {
         next();
 }
 app.use(allowCrossDomain);
-const directoryPath = path.join(__dirname,'uploads');
+const directoryPath = path.join(__dirname,'/uploads');
 
 //..............................................................//
 //Some Useful Variables for the /lists endpoint 
@@ -46,12 +44,12 @@ var list_parsed3 = [];
 
 // Using different packages
 
-app.use(router)
+app.use('/load',router)
 
 // Serving a static file
 app.use(express.static('./public'))
 //onFileChang
-app.use(bodyParser.urlencoded({extended: false}))
+
 
 //..............................................................//
 
@@ -90,7 +88,7 @@ fs.readdir(directoryPath, function(err, files) {
         list_parsed3 = list_parsed[3].split('.');
         //console.log(list_parsed3);
         //console.log(list_parsed2)
-        list.push({serialNo: i, manufacturerId: list_parsed[0], deviceType: list_parsed[1], deviceRevision: list_parsed[2], protocol: list_parsed3[0], fileType: list_parsed2[1]});
+        list.push({serialNo: i, manufacturerId: list_parsed[0], deviceType: list_parsed[1], deviceRevision: list_parsed[2], protocolType: list_parsed3[0], fileType: list_parsed2[1]});
         //console.log(list)
         i=i+1;
     })

@@ -11,7 +11,7 @@
 
 
 
- <!-- <p-table #dt class="gridView" [value]="mockdata">
+  <!-- <p-table #dt class="gridView" [value]="mockdata">
               <ng-template pTemplate="caption">
                      <div style="text-align: right">        
                          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -51,24 +51,27 @@
 </p-table> -->
 
 
-  <p-table  #dt class="gridView" [columns]="cols" [value]="mockdata">
+   <p-table  #dt class="gridView" [columns]="cols" [value]="mockdata"> 
              <!--   Search Filter-->
-              <ng-template pTemplate="caption">
+               <ng-template pTemplate="caption">
                      <div style="text-align: right">        
                          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                          <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
                      </div>
-              </ng-template>
+              </ng-template> 
               <!-- Search Filter Done-->
-       <ng-template pTemplate="header" let-columns>
+              <!-- Sorting the table wrt column field-->
+        <ng-template pTemplate="header" let-columns>
            <tr>
-               <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+               <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                    {{col.header}}
                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                </th>
            </tr>
        </ng-template>
-  <ng-template pTemplate="body" let-data >
+              <!-- Sorting the table wrt Column DONE!!! -->
+
+   <ng-template pTemplate="body" let-data let-columns="columns">
       <tr>
           <td >
                  {{data.serialNo}}
@@ -83,10 +86,11 @@
                  {{data.deviceRevision}}
           </td>
           <td>
-                 {{data.protocol}}
+                 {{data.protocolType}}
           </td>
           <td>
                  {{data.fileType}}
+                 <i (click)="downloadFile(data.manufacturerId, data.deviceType, data.deviceRevision, data.protocolType, data.fileType)" class="fa fa-download pl-2 pointer"></i>
           </td>
       </tr>
   </ng-template>

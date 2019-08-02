@@ -36,8 +36,8 @@ router.post('/api/v1/fileserver', function(req, res){
 
 //define a route to download a file and parse the url.
 router.get('/api/v1/fileserver',(req, res) => {
-    var flag = false;
-    var i;
+   // var flag = false;
+   // var i;
     var file; //the name of file to be downloaded
     var protocols = ["HART", "PROFIBUS", "PROFINET", "MODBUS"];
     var extensions = ["json", "zip", "xml", "bin"];
@@ -49,46 +49,46 @@ router.get('/api/v1/fileserver',(req, res) => {
     var fileType = req.param('fileType');
 
 //.......................................................    
-    for (i=0; i<4; i++) {
-        if ( fileType != extensions[i] && fileType != undefined ){
-            flag = true;
-            break;
-        }
-    }
+    // for (i=0; i<4; i++) {
+    //     if ( fileType != extensions[i] && fileType != undefined ){
+    //         flag = true;
+    //         break;
+    //     }
+    // }
 
-    for (i=0; i<4; i++) {
-        if ( protocolType != protocols[i] && protocolType != undefined ){
-            flag = true;
-            break;
-        }
-    }
+    // for (i=0; i<4; i++) {
+    //     if ( protocolType != protocols[i] && protocolType != undefined ){
+    //         flag = true;
+    //         break;
+    //     }
+    // }
 //........................................................
-    if (typeof(manufacturerId) != "bigint"){
-        flag = true;
-    }
-    if (typeof(deviceType) != "bigint"){
-        flag = true;
-    }
-    if (typeof(deviceRevision) != "bigint"){
-        flag = true;
-    }
+    // if (typeof(manufacturerId) != "bigint"){
+    //     flag = true;
+    // }
+    // if (typeof(deviceType) != "bigint"){
+    //     flag = true;
+    // }
+    // if (typeof(deviceRevision) != "bigint"){
+    //     flag = true;
+    // }
 //.........................................................
-    if ( manufacturerId > 65536 || manufacturerId < 0 ){
-        flag = true;
-    }
-    if ( deviceType > 255 || deviceType < 0 ){
-        flag = true;
-    }
-    if ( deviceRevision > 255 || deviceRevision < 0 ){
-        flag = true;
-    }
+    // if ( manufacturerId > 65536 || manufacturerId < 0 ){
+    //     flag = true;
+    // }
+    // if ( deviceType > 255 || deviceType < 0 ){
+    //     flag = true;
+    // }
+    // if ( deviceRevision > 255 || deviceRevision < 0 ){
+    //     flag = true;
+    // }
 //.........................................................
-    if(protocolType === undefined) {
-        protocolType = 'HART';
-    }
-    if(fileType === undefined) {
-        fileType = 'zip';
-    }
+    // if(protocolType === undefined) {
+    //     protocolType = 'HART';
+    // }
+    // if(fileType === undefined) {
+    //     fileType = 'zip';
+    // }
 //.........................................................
 
     file = manufacturerId + "_" + deviceType + "_" + deviceRevision + "_" + protocolType + "." + fileType;
@@ -101,25 +101,22 @@ router.get('/api/v1/fileserver',(req, res) => {
     // storing the file path in fileLocation.
     var fileLocation = path.join('./uploads',file);
     console.log(fileLocation);
-    
+    console.log(protocolType)
     res.download(fileLocation, file, function (err) {
         if (err) {
             console.log("Error 404. File Not Found");
-            res.sendStatus(404).json(err);
-            res.redirect('/');
+            res.status(404).send(err);
         }
-        else if (!flag){
-            console.log("Enter a Valid Value.");
-            res.sendStatus(404).json(err);
-            //error code and description in json
-            // invalid input for flag = true
-            res.redirect('/');
-        }
-        else {
-            console.log("File Downloaded");
-        }
+        // else if (!flag){
+        //     console.log("Enter a Valid Value.");
+        //     res.status(404).send(err);
+        //     //error code and description in json
+        //     // invalid input for flag = true
+        //    // res.redirect('/');
+        // }
+            res.status(200).sendFile(fileLocation);
     });
-    flag = false;
+    //flag = false;
 });
 
 //.............................................................
