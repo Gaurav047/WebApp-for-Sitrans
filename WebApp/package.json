@@ -34,7 +34,7 @@
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "material": "^0.3.0",
     "ngx-progressbar": "^2.1.1",
     "popper.js": "^1.14.6",
