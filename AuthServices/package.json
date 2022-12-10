@@ -11,7 +11,7 @@
   "dependencies": {
     "atob": "^2.1.2",
     "crypto": "^1.0.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.24.0",
     "node-async-loop": "^1.2.2",
